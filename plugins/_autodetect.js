@@ -16,7 +16,7 @@ const chat = global.db.data.chats[m.chat]
 const users = m.messageStubParameters[0]
 const usuario = await resolveLidToRealJid(m?.sender, conn, m?.chat)
 const groupAdmins = participants.filter(p => p.admin)
-const rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363402079893698@newsletter', serverMessageId: '', newsletterName: '࿙ִ࿙ ͡ྌ᳝֟፝ྌ𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 - 𝐁𝐎𝐓ྌ᳝֟፝ྌ͡ ࿚ִ࿚' }, externalAdReply: { title: "𐔌 . ⋮ ᗩ ᐯ I Տ O .ᐟ ֹ ₊ ꒱", body: textbot, mediaUrl: null, description: null, previewType: "PHOTO", thumbnail: await (await fetch(icono)).buffer(), sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, mentionedJid: null }}
+const rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363404087331895@newsletter', serverMessageId: '', newsletterName: '࿙ִ࿙ ͡ྌ᳝֟፝ྌ𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 - 𝐁𝐎𝐓ྌ᳝֟፝ྌ͡ ࿚ִ࿚' }, externalAdReply: { title: "𐔌 . ⋮ ᗩ ᐯ I Տ O .ᐟ ֹ ₊ ꒱", body: textbot, mediaUrl: null, description: null, previewType: "PHOTO", thumbnail: await (await fetch(icono)).buffer(), sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, mentionedJid: null }}
 
   const getThumbnail = async () => {
     const res = await axios.get("https://i.postimg.cc/pTm6Z0fw/1754253021526.jpg", { responseType: "arraybuffer" })
@@ -44,7 +44,7 @@ const rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInf
           retailerId: "Carlos.R.V",
           productImageCount: 1
         },
-        businessOwnerJid: "51984169553@s.whatsapp.net"
+        businessOwnerJid: "51900922660@s.whatsapp.net"
       }
     }
   }
