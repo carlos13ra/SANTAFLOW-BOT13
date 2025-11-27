@@ -10,10 +10,20 @@ const icono = "https://i.postimg.cc/pTm6Z0fw/1754253021526.jpg"
 const textbot = "SANTAFLOW BOT - SISTEMA DE DETECCIÓN"
 const dev = "Creado por Carlos R.V"
 const redes = "https://youtube.com/@C4rlos.rv" 
-// Cámbialo por tus redes si quieres
 
 const groupMetadataCache = new Map()
 const lidCache = new Map()
+
+// ✅ FUNCIÓN QUE FALTABA - YA NO DARÁ ERROR
+async function resolveLidToRealJid(jid = '', conn) {
+  try {
+    if (!jid) return jid
+    const result = await conn.onWhatsApp(jid)
+    return result?.[0]?.jid || jid
+  } catch {
+    return jid
+  }
+}
 
 const handler = m => m
 
@@ -26,7 +36,7 @@ handler.before = async function (m, { conn, participants, groupMetadata }) {
 
   const chat = global.db.data.chats[m.chat]
   const users = m.messageStubParameters[0]
-  const usuario = await resolveLidToRealJid(m?.sender, conn, m?.chat)
+  const usuario = await resolveLidToRealJid(m?.sender, conn)
 
   const groupAdmins = participants.filter(p => p.admin)
 
