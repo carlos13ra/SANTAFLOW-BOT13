@@ -29,15 +29,15 @@ console.log(`Error : ${e}`)
   
 global.creador = 'wa.me/51984169553'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
-global.namechannel = '▐▐ ✦ 𝐆𝐎𝐉𝐎 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
-global.namechannel2 = '▐▐ ✦ 𝐆𝐎𝐉𝐎 - 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
-global.namegrupo = '▐▐ ⚡ 𝐆𝐎𝐉𝐎 • 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 ⚡ ▐▐'
-global.namecomu = '▐▐ ⚡ 𝐆𝐎𝐉𝐎.-𝗕𝗼𝘁 • 𝗖𝗼𝗺𝘂𝗻𝗶𝘁𝘆 ⚡ ▐▐'
+global.namechannel = '▐▐ ✦ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
+global.namechannel2 = '▐▐ ✦ 𝐒𝐚𝐧𝐭𝐚𝐟𝐥𝐨𝐰 - 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
+global.namegrupo = '▐▐ ⚡ 𝘀𝗮𝗻𝘁𝗮𝗳𝗹𝗼𝘄 • 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 ⚡ ▐▐'
+global.namecomu = '▐▐ ⚡ 𝗦𝗮𝗻𝘁𝗮𝗳𝗹𝗼𝘄-𝗕𝗼𝘁 • 𝗖𝗼𝗺𝘂𝗻𝗶𝘁𝘆 ⚡ ▐▐'
 global.listo = '✦❀ *Aquí tienes, capitán ฅ^•ﻌ•^ฅ* ❀✦'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-global.canalIdM = ["120363402079893698@newsletter", "120363402079893698@newsletter", "120363402079893698@newsletter"]
-global.canalNombreM = ["𝐆𝐎𝐉𝐎 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "𝐆𝐎𝐉𝐎 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "ᴳᴼᴶᴼ Bot | ° ᴄʜᴀɴɴᴇʟ - Official 🧪꙰⃟⸙"]
+global.canalIdM = ["120363404087331895@newsletter", "120363404087331895@newsletter", "120363404087331895@newsletter"]
+global.canalNombreM = ["𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "𝐆𝐎𝐉𝐎 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "ˢᴬᴺᵀᴬᶠᴸᴼᵂ Bot | ° ᴄʜᴀɴɴᴇʟ - Official 🧪꙰⃟⸙"]
 global.channelRD = await getRandomChannel()
 
 global.d = new Date(new Date + 3600000)
