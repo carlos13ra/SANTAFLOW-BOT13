@@ -37,7 +37,7 @@ global.listo = '✦❀ *Aquí tienes, capitán ฅ^•ﻌ•^ฅ* ❀✦'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
 global.canalIdM = ["120363404087331895@newsletter", "120363404087331895@newsletter", "120363404087331895@newsletter"]
-global.canalNombreM = ["𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "𝐆𝐎𝐉𝐎 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "ˢᴬᴺᵀᴬᶠᴸᴼᵂ Bot | ° ᴄʜᴀɴɴᴇʟ - Official 🧪꙰⃟⸙"]
+global.canalNombreM = ["𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "ˢᴬᴺᵀᴬᶠᴸᴼᵂ Bot | ° ᴄʜᴀɴɴᴇʟ - Official 🧪꙰⃟⸙"]
 global.channelRD = await getRandomChannel()
 
 global.d = new Date(new Date + 3600000)
@@ -61,10 +61,10 @@ global.emoji5 = '(づ｡◕‿‿◕｡)づ'
 global.emoji6 = '★~(◠‿◕✿)'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5, emoji6].getRandom()
 
-global.wait = '⚽️ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
-global.waitt = '⚽️ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
-global.waittt = '⚽️ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
-global.waitttt = '⚽️ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
+global.wait = '⌛ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
+global.waitt = '🎧 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
+global.waittt = '💫 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
+global.waitttt = '💥 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖𝙘𝙞𝙚𝙣𝙘𝙞𝙖...';
 
 
 global.hotw = '*🐭 El contenido `NSFW` está desactivado en este grupo.*\n> Un administrador puede activarlo con el comando » *`#nsfw on`*';
@@ -77,8 +77,8 @@ global.verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register']
 var canal = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'  
 var comunidad = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
 var git = 'https://github.com/carlos13ra'
-var github = 'https://github.com/carlos13ra/GOJO-BOT'
-var tiktok = 'https://tiktok.com/@the.black.xz'
+var github = 'https://github.com/carlos13ra/SANTAFLOW-BOT13'
+var tiktok = 'https://tiktok.com/@carlosramirez.fc'
 let correo = 'carlosramirezvillanueva30@gmail.com'
 global.redes = [canal, comunidad, git, github, tiktok, correo].getRandom()
 
@@ -107,7 +107,7 @@ global.packsticker = `
 ✦ ℍ𝕠𝕣𝕒: ${tiempo}
 ✧⁺₊⋆☾⋆.˚₊✩🍒🌸
 `;
-global.packsticker2 = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ GOJO-BOT ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╮
+global.packsticker2 = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ SANTAFLOW-BOT ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╮
      ${dev}
 ╰࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ ⌬ ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╯`
   
