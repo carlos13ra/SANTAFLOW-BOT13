@@ -2,17 +2,30 @@ import { createHash } from 'crypto'
 import fetch from 'node-fetch'
 
 /**
- * rcanal: objeto para pasar como contextInfo en conn.reply(m, rcanal)
- * Puedes personalizar newsletterName/newsletterJid si quieres.
+ * rcanal COMPLETO con icono + imagen
  */
+const icono = "https://i.postimg.cc/pTm6Z0fw/1754253021526.jpg" // ICONO DEL CANAL
+const imagenPreview = "https://i.postimg.cc/3xZ6GScP/photo-2025.jpg" // IMAGEN GRANDE
+
 const rcanal = {
   contextInfo: {
     isForwarded: true,
     forwardingScore: 999,
+    mentionedJid: [],
     forwardedNewsletterMessageInfo: {
       newsletterJid: "120363404087331895@newsletter",
       newsletterName: "💫Santaflow Bot💫",
       serverMessageId: -1
+    },
+    externalAdReply: {
+      title: "💫Santaflow Bot💫",
+      body: "Canal oficial del bot",
+      thumbnailUrl: icono,         // ICONO
+      mediaUrl: imagenPreview,     // IMAGEN GRANDE
+      sourceUrl: "https://whatsapp.com/channel/0029Va123456789",
+      mediaType: 1,
+      renderLargerThumbnail: true,
+      previewType: "photo"
     }
   }
 }
@@ -24,19 +37,13 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
     let bot = global.db.data.settings?.[conn.user?.jid] || {}
     const type = command.toLowerCase()
 
-    // Determinar estado a aplicar según args (on/enable, off/disable)
     let explicitOn = args[0] && (/^on|enable$/i.test(args[0]))
     let explicitOff = args[0] && (/^off|disable$/i.test(args[0]))
 
-    // Por defecto: si no se pasa arg, mantenemos comportamiento previo:
-    // - Para la mayoría: aplicar explícito (si no hay arg, mostramos estado)
-    // - Para casos que antes togglean (antiSpam, antifake), cuando no hay arg, togglean.
-    // Para simplificar usaremos variable isEnable que puede ser true/false/null (null = no explicit)
     let isEnable = null
     if (explicitOn) isEnable = true
     if (explicitOff) isEnable = false
 
-    // Si no se pasó arg y la intención del usuario era sólo mostrar estado:
     if (isEnable === null) {
       const estado = chat[type] ? '✓ Activado' : '✗ Desactivado'
       return conn.reply(m.chat, `
@@ -55,7 +62,6 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
 ━━━━━━━━━━━━━━━━━━━━━━━`, m, rcanal)
     }
 
-    // A partir de aquí isEnable es true/false (el usuario pidió cambiar)
     let applyToAllBot = false
     let applyToUser = false
 
@@ -143,16 +149,9 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
         break
 
       case 'antispam':
-      case 'antispam': // mantengo nombres
         applyToAllBot = true
         if (!isOwner) return global.dfail('rowner', m, conn)
-        // Si el usuario no pasó explicitOn/explicitOff, togglear; si pasó, asignar.
-        if (isEnable === null) {
-          bot.antiSpam = !bot.antiSpam
-          isEnable = bot.antiSpam
-        } else {
-          bot.antiSpam = isEnable
-        }
+        bot.antiSpam = isEnable
         break
 
       case 'antilink2':
@@ -198,7 +197,6 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
       case 'antifake':
       case 'antivirtuales':
         if (m.isGroup && !(isAdmin || isOwner)) return global.dfail('admin', m, conn)
-        // comportamiento previo: toggle si no pasan args -> mantenemos eso
         if (isEnable === null) {
           chat.antifake = !chat.antifake
           isEnable = chat.antifake
@@ -211,21 +209,16 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
         return conn.reply(m.chat, `Comando desconocido: ${command}`, m, rcanal)
     }
 
-    // asignar estado final en chat o bot según corresponda
-    // Para seguridad, actualizamos chat[type] solo si existe la propiedad o no rompe nada.
     try {
       chat[type] = isEnable
-    } catch (e) {
-      // noop
-    }
+    } catch {}
 
-    // Guardar cambios en la base de datos (si existieran estructuras)
     try {
       global.db.data.chats[m.chat] = chat
       global.db.data.users[m.sender] = user
       if (applyToAllBot) global.db.data.settings[conn.user.jid] = bot
     } catch (e) {
-      console.error('Error guardando DB tras cambiar configuración:', e)
+      console.error('Error guardando DB:', e)
     }
 
     conn.reply(m.chat, `°================================°
@@ -234,7 +227,7 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
 
 > 🧩 𝐅𝐮𝐧𝐜𝐢𝐨́𝐧 » *${type}*
 > ⚙️ 𝐄𝐬𝐭𝐚𝐝𝐨 » ${isEnable ? '✅ 𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎' : '❌ 𝐃𝐄𝐒𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎'}
-> 🌍 𝐀𝐩𝐥𝐢𝐜𝐚 » ${applyToAllBot ? '🌐 𝐓𝐨𝐝𝐨 𝐞𝐥 𝐁𝐨𝐭' : applyToUser ? '👤 𝐔𝐬𝐮𝐚𝐫𝐢𝐨' : '💬 𝐂𝐡𝐚𝐭'}
+> 🌍 𝐀𝐩𝐥𝐢𝐜𝐚 » ${applyToAllBot ? '🌐 𝐓𝐨𝐝𝐨 𝐞𝐥 𝐁𝐨𝐭' : '💬 𝐂𝐡𝐚𝐭'}
 
 °================================°`, m, rcanal)
 
@@ -244,8 +237,8 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
   }
 }
 
-handler.help = ['welcome', 'bienvenida', 'antiprivado', 'antiprivate', 'restrict', 'restringir', 'antibot', 'antibots', 'autoaceptar', 'aceptarauto', 'autorechazar', 'rechazarauto', 'autoresponder', 'autorespond', 'antisubbots', 'antibot2', 'modoadmin', 'soloadmin', 'reaction', 'reaccion', 'nsfw', 'modohorny', 'antispam', 'antispam', 'jadibotmd', 'modejadibot', 'subbots', 'detect', 'avisos', 'antilink', 'audios', 'antiver', 'antiocultar', 'antilink2', 'antiarabe', 'antifake', 'antivirtuales']
+handler.help = ['welcome','bienvenida','antiprivado','antiprivate','restrict','restringir','antibot','antibots','autoaceptar','aceptarauto','autorechazar','rechazarauto','autoresponder','autorespond','antisubbots','antibot2','modoadmin','soloadmin','reaction','reaccion','nsfw','modohorny','antispam','jadibotmd','modejadibot','subbots','detect','avisos','antilink','audios','antiver','antiocultar','antilink2','antiarabe','antifake','antivirtuales']
 handler.tags = ['nable']
-handler.command = ['welcome', 'bienvenida', 'antiprivado', 'antiprivate', 'restrict', 'restringir', 'antibot', 'antibots', 'autoaceptar', 'aceptarauto', 'autorechazar', 'rechazarauto', 'autoresponder', 'autorespond', 'antisubbots', 'antibot2', 'modoadmin', 'soloadmin', 'reaction', 'reaccion', 'nsfw', 'modohorny', 'antispam', 'antispam', 'jadibotmd', 'modejadibot', 'subbots', 'detect', 'avisos', 'antilink', 'audios', 'antiver', 'antiocultar', 'antilink2', 'antiarabe', 'antifake', 'antivirtuales']
+handler.command = handler.help
 
 export default handler
