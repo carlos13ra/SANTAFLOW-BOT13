@@ -1,5 +1,11 @@
 import fetch from 'node-fetch';
 
+// ✔ CANAL DEFINIDO (evita ReferenceError)
+const channelRD = {
+  id: "120363404087331895@newsletter",
+  name: "₊💫𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾 | CHANNEL OFICIAL © ◌"
+};
+
 export async function before(m, { conn }) {
   if (!m.text || !global.prefix.test(m.text)) return;
 
@@ -77,7 +83,6 @@ export async function before(m, { conn }) {
     return;
   }
 
-  //await m.react('💔');
   const mensajesNoEncontrado = [
     `> ⌗ El comando *"${command}"* no se reconoce.
 > ⌗ Menú disponible: *${usedPrefix}menu*`,
