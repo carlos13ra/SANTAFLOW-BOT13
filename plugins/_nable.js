@@ -10,8 +10,8 @@ const rcanal = {
     isForwarded: true,
     forwardingScore: 999,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: "0@newsletter",
-      newsletterName: "Santaflow Bot",
+      newsletterJid: "120363404087331895@newsletter",
+      newsletterName: "💫Santaflow Bot💫",
       serverMessageId: -1
     }
   }
