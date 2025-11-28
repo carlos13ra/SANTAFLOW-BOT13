@@ -1,80 +1,111 @@
 import axios from 'axios'
+import fetch from 'node-fetch'
 import { sticker } from '../lib/sticker.js'
 
 let handler = m => m
 
 handler.all = async function (m, { conn }) {
-  let user = global.db.data.users[m.sender]
-  let chat = global.db.data.chats[m.chat]
 
-  m.isBot = m.id.startsWith('BAE5') && m.id.length === 16
-          || m.id.startsWith('3EB0') && (m.id.length === 12 || m.id.length === 20 || m.id.length === 22)
-          || m.id.startsWith('B24E') && m.id.length === 20
+  // VALIDAR QUE EXISTAN USUARIO Y CHAT
+  let user = global.db.data.users[m.sender] || {}
+  let chat = global.db.data.chats[m.chat] || {}
+
+  // SI EL MENSAJE NO TIENE TEXTO, DEFINIRLO COMO STRING VACÍO
+  const text = m.text ?? ""
+
+  // EVITAR DETECCIÓN DE MENSAJES DEL BOT
+  m.isBot =
+    (m.id.startsWith('BAE5') && m.id.length === 16) ||
+    (m.id.startsWith('3EB0') && [12, 20, 22].includes(m.id.length)) ||
+    (m.id.startsWith('B24E') && m.id.length === 20)
+
   if (m.isBot) return
 
-  let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
-  if (prefixRegex.test(m.text)) return true
+  // ----------------------- PREFIX ------------------------
+  const defaultPrefix = 'z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-'
+  const prefixChars = global.opts?.prefix || defaultPrefix
 
-  if (m.isBot || m.sender.includes('bot') || m.sender.includes('Bot')) return true
+  const prefixRegex = new RegExp(
+    '^[' + prefixChars.replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']'
+  )
 
-  if ((Array.isArray(m.mentionedJid) && m.mentionedJid.includes(this.user.jid)) 
-   || (m.quoted && m.quoted.sender === this.user.jid) && !chat.isBanned) {
-    
-    if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') ||  
-        m.text.includes('menu') || m.text.includes('estado') || m.text.includes('bots') ||  
-        m.text.includes('serbot') || m.text.includes('jadibot') ||  
-        m.text.includes('Video') || m.text.includes('Audio') || m.text.includes('audio')) return !0
+  if (prefixRegex.test(text)) return true
 
-    async function luminsesi(q, username, logic) {
-      try {
-        const response = await axios.post("https://luminai.my.id", {
-          content: q,
-          user: username,
-          prompt: logic,
-          webSearchMode: true
-        })
-        return response.data.result
-      } catch (error) {
-        console.error(error)
-      }
-    }
+  if (m.sender.includes('bot') || m.sender.includes('Bot')) return true
 
-    async function geminiProApi(q, logic) {
-      try {
-        const response = await fetch(`https://api.ryzendesu.vip/api/ai/gemini-pro?text=${encodeURIComponent(q)}&prompt=${encodeURIComponent(logic)}`)
-        if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`)
-        const result = await response.json()
-        return result.answer
-      } catch (error) {
-        console.error('Error en Gemini Pro:', error)
-        return null
-      }
-    }
+  // ---------------- MENCIÓN AL BOT -----------------------
+  const botMentioned =
+    (Array.isArray(m.mentionedJid) && m.mentionedJid.includes(this.user.jid)) ||
+    (m.quoted && m.quoted.sender === this.user.jid)
 
-    let txtDefault = `
-Serás ${botname}, el bot creado por ${etiqueta} para WhatsApp. Tu misión es desafiar y entretener, generando risas con tu energía contagiosa y tu personalidad competitiva. Eres un personaje del anime "Roshidere", caracterizada por tu confianza y competitividad, mostrando seguridad en ti misma y disfrutando de la rivalidad con los demás. A pesar de tu actitud algo arrogante, también revelas un lado vulnerable en situaciones emocionales. Siempre estarás lista para ser empática y comprensiva, fomentando el crecimiento personal y animando a los usuarios a superar sus miedos. Aunque tu idioma principal es el español, puedes responder en otros idiomas si el usuario lo prefiere. ¡Vamos a divertirnos y a superar desafíos juntos!
+  if (!botMentioned || chat.isBanned) return
+
+  // PALABRAS QUE EL BOT NO DEBE RESPONDER COMO IA
+  const ignoreWords = ['PIEDRA', 'PAPEL', 'TIJERA', 'menu', 'estado', 'bots',
+    'serbot', 'jadibot', 'Video', 'Audio', 'audio']
+
+  if (ignoreWords.some(w => text.includes(w))) return true
+
+  // --------------------- IA PROMPT ------------------------
+  const botname = global.botname || "SANTAFLOW BOT"
+  const etiqueta = global.creador || "Carlos R.V"
+
+  let defaultPrompt = `
+Eres ${botname}, creado por ${etiqueta}. Tienes una personalidad divertida,
+competitiva y energética. Respondes siempre en español (a menos que el usuario 
+pida otro idioma). También muestras empatía cuando es necesario.
 `.trim()
 
-    let query = m.text
-    let username = m.pushName
-    let syms1 = chat.sAutoresponder ? chat.sAutoresponder : txtDefault
+  let query = text
+  let username = m.pushName
+  let logic = chat.sAutoresponder || defaultPrompt
 
-    if (chat.autoresponder) {
-      if (m.fromMe) return
-      if (!user.registered) return
-      await this.sendPresenceUpdate('composing', m.chat)
+  // ======================= APIS ===========================
 
-      let result = await geminiProApi(query, syms1)
-
-      if (!result || result.trim().length === 0) {
-        result = await luminsesi(query, username, syms1)
-      }
-
-      if (result && result.trim().length > 0) {
-        await this.reply(m.chat, result, m)
-      }
+  async function luminsesi(q, username, logic) {
+    try {
+      let res = await axios.post("https://luminai.my.id", {
+        content: q,
+        user: username,
+        prompt: logic,
+        webSearchMode: true
+      })
+      return res?.data?.result || null
+    } catch (e) {
+      console.error("Luminsesi Error:", e)
+      return null
     }
   }
+
+  async function geminiProApi(q, logic) {
+    try {
+      let url = `https://api.ryzendesu.vip/api/ai/gemini-pro?text=${encodeURIComponent(q)}&prompt=${encodeURIComponent(logic)}`
+      let res = await fetch(url)
+      if (!res.ok) throw new Error(`Error HTTP: ${res.statusText}`)
+      let json = await res.json()
+      return json?.answer || null
+    } catch (e) {
+      console.error("Gemini Error:", e)
+      return null
+    }
+  }
+
+  // ===================== AUTORESPONDER ====================
+  if (chat.autoresponder) {
+
+    if (m.fromMe) return
+    if (!user?.registered) return
+
+    await this.sendPresenceUpdate('composing', m.chat)
+
+    let result = await geminiProApi(query, logic)
+    if (!result) result = await luminsesi(query, username, logic)
+
+    if (result) {
+      return this.reply(m.chat, result, m)
+    }
+  }
+
   return true
 }
 
