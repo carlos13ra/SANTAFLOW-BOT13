@@ -1,29 +1,40 @@
 let handler = async (m, { conn, args, participants }) => {
-    let users = Object.entries(global.db.data.users).map(([key, value]) => {
-        return { ...value, jid: key };
-    });
+    // Variables de respaldo por si no existen
+    const emoji = global.emoji || "💰"
+    const moneda = global.moneda || "DOLARES💶"
 
-    let sortedLim = users.sort((a, b) => (b.coin || 0) + (b.bank || 0) - (a.coin || 0) - (a.bank || 0));
-    let len = args[0] && args[0].length > 0 ? Math.min(10, Math.max(parseInt(args[0]), 10)) : Math.min(10, sortedLim.length);
+    // Obtener usuarios de la base de datos
+    let users = Object.entries(global.db.data.users).map(([jid, data]) => {
+        return { jid, ...data }
+    })
 
-    let text = `「${emoji}」Los usuarios con más *¥${moneda}* son:\n\n`;
+    // Ordenar por dinero total
+    let sorted = users.sort((a, b) => {
+        return ((b.coin || 0) + (b.bank || 0)) - ((a.coin || 0) + (a.bank || 0))
+    })
 
-    text += sortedLim.slice(0, len).map(({ jid, coin, bank }, i) => {
-        let total = (coin || 0) + (bank || 0);
-        let name = conn.getName(jid) || "Usuario desconocido";
+    // Cuántos mostrar
+    let len = args[0] ? Math.min(10, Number(args[0])) : 10
 
-        return `✰ ${i + 1} » *${name}*\n\t\t Total→ *¥${total} ${moneda}*`;
-    }).join('\n');
+    let text = `「${emoji}」*Top ${len} usuarios con más ${moneda}*\n\n`
 
-    await conn.reply(m.chat, text.trim(), m);
-};
+    for (let i = 0; i < len && i < sorted.length; i++) {
+        let u = sorted[i]
+        let total = (u.coin || 0) + (u.bank || 0)
 
-handler.help = ['baltop'];
-handler.tags = ['rpg'];
-handler.command = ['baltop', 'eboard'];
-handler.group = true;
-handler.register = true;
-handler.fail = null;
-handler.exp = 0;
+        // Obtener nombre (funciona incluso si no está en el grupo)
+        let name = await conn.getName(u.jid).catch(_ => "Usuario")
 
-export default handler;
+        text += `✰ ${i + 1} » *${name}*\n   Total → *¥${total} ${moneda}*\n\n`
+    }
+
+    await conn.reply(m.chat, text.trim(), m)
+}
+
+handler.help = ['baltop']
+handler.tags = ['rpg']
+handler.command = ['baltop', 'eboard']
+handler.group = true
+handler.register = true
+
+export default handler
