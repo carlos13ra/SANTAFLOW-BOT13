@@ -113,7 +113,7 @@ ${secciones}
 `.trim()
 
 await m.react('❄️')
-await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363404087331895@newsletter', newsletterName: 'test', serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: banner, sourceUrl: '', mediaType: 1, renderLargerThumbnail: false,
+await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363404087331895@newsletter', newsletterName: '🎧 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 - 𝐁𝐎𝐓 | 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 𝐎𝐅𝐈𝐂𝐈𝐀𝐋 🎧', serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: banner, sourceUrl: '', mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
   } catch (e) {
