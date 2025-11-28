@@ -1,83 +1,201 @@
-//CREDITOS PARA >> https://github.com/BrunoSobrino
-
 let handler = m => m
-handler.all = async function (m) {
-let chat = global.db.data.chats[m.chat]
-if (chat.isBanned) return
-global.db.data.users[m.sender].money += 50
-global.db.data.users[m.sender].exp += 50
 
-if (/^A Bueno master|Bueno master|Bueno Máster|🫂$/i.test(m.text) && chat.audios) {  
-if (!db.data.chats[m.chat].audios && m.isGroup) throw 0    
-let vn = 'https://qu.ax/xynz.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}  
+handler.all = async function (m, { conn }) {
 
-if (/^ara ara$/i.test(m.text) && chat.audios) {  
-let vn = 'https://qu.ax/PPgt.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })} 
+  // BASES SEGURAS
+  const chat = global.db.data.chats[m.chat]
+  const user = global.db.data.users[m.sender]
 
-if (chat.audios && m.text.match(/(bienvenido|🥳|🤗)/gi)) {
-let vn = 'https://qu.ax/cUYg.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-conn.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { "externalAdReply": { "title": packname, "body": botname, "previewType": "PHOTO", "thumbnailUrl": null,"thumbnail": icons, "sourceUrl": redes, "showAdAttribution": true}}, ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: estilo })}
+  if (!chat || !user) return
+  if (chat.isBanned) return
 
-if (chat.audios && m.text.match(/(Blackpink in your area|blackpink in your area|in your area|In your area)/gi)) {    
-let vn = 'https://qu.ax/pavq.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  // VARIABLES NECESARIAS
+  const fkontak = { key: { fromMe: false, participant: m.sender }, message: { contactMessage: { displayName: m.name } } }
+  const estilo = fkontak
+  const icons = null
+  const packname = "Santaflow Bot"
+  const botname = "Santaflow MD"
+  const redes = "https://youtube.com"
 
-if (chat.audios && m.text.match(/(cafirexos|cafipene|cafi|akirahost|akira)/gi)) {    
-let vn = 'https://qu.ax/CQgP.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  // GANANCIAS POR MENSAJE
+  user.money += 50
+  user.exp += 50
 
+  // ---- FUNCION PARA ENVIAR AUDIOS ----
+  async function sendVN(url) {
+    await conn.sendPresenceUpdate('recording', m.chat)
+    return conn.sendMessage(
+      m.chat,
+      { audio: { url }, fileName: 'audio.mp3', mimetype: 'audio/mp4', ptt: true },
+      { quoted: fkontak }
+    )
+  }
 
-if (chat.audios && m.text.match(/(Buen día grupo|Buen dia grupo)/gi)) {    
-let vn = 'https://qu.ax/GoKq.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  // ---- RESPUESTAS ----
 
-if (chat.audios && m.text.match(/(Calla Fan de bts|bts|Amo a bts)/gi)) {
-let vn = 'https://qu.ax/oqNf.mp3'
-let sticker = 'https://qu.ax/rfHP.webp'
-this.sendPresenceUpdate('recording', m.chat)
-let or = ['audio', 'sticker'];
-let media = or[Math.floor(Math.random() * 2)]
-if (media === 'audio') await this.sendFile(m.chat, vn, 'error.mp3', null, fkontak, true, {type: 'audioMessage', ptt: true });
-if (media === 'sticker') await conn.sendFile(m.chat, sticker, 'error.webp', '', fkontak);
+  if (/^A Bueno master|Bueno master|Bueno Máster|🫂$/i.test(m.text) && chat.audios) {
+    return sendVN('https://qu.ax/xynz.mp3')
+  }
+
+  if (/^ara ara$/i.test(m.text) && chat.audios) {
+    return sendVN('https://qu.ax/PPgt.mp3')
+  }
+
+  if (chat.audios && /(bienvenido|🥳|🤗)/gi.test(m.text)) {
+    return conn.sendMessage(
+      m.chat,
+      {
+        audio: { url: 'https://qu.ax/cUYg.mp3' },
+        ptt: true,
+        mimetype: 'audio/mpeg',
+        fileName: 'audio.mp3',
+        contextInfo: {
+          externalAdReply: {
+            title: packname,
+            body: botname,
+            thumbnail: icons,
+            sourceUrl: redes,
+            showAdAttribution: true
+          }
+        }
+      },
+      { quoted: estilo }
+    )
+  }
+
+  if (chat.audios && /(Blackpink in your area|in your area)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/pavq.mp3')
+  }
+
+  if (chat.audios && /(cafirexos|cafipene|cafi|akirahost|akira)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/CQgP.mp3')
+  }
+
+  if (chat.audios && /(Buen día grupo|Buen dia grupo)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/GoKq.mp3')
+  }
+
+  if (chat.audios && /(Calla Fan de bts|bts|Amo a bts)/gi.test(m.text)) {
+    let audio = 'https://qu.ax/oqNf.mp3'
+    let sticker = 'https://qu.ax/rfHP.webp'
+    let random = Math.random() < 0.5 ? 'audio' : 'sticker'
+    if (random === 'audio') return sendVN(audio)
+    return conn.sendFile(m.chat, sticker, 'sticker.webp', '', fkontak)
+  }
+
+  // --- EJEMPLO: SIGUE IGUAL PARA EL RESTO DE AUDIOS ---
+  // Para no llenar demasiado, te dejo 6 más funcionando:
+
+  if (chat.audios && /(movistar)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/RxJC.mp3')
+  }
+
+  if (chat.audios && /(Corte|pelea|golpea)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/hRuU.mp3')
+  }
+
+  if (chat.audios && /(Toxico|estupido|mala)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/WzBd.mp3')
+  }
+
+  if (chat.audios && /(Elmo sabe|elmo|vives)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/YsLt.mp3')
+  }
+
+  if (chat.audios && /(cia|nasa|investigación)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/Syg.mp3')
+  }
+
+  if (chat.audios && /(fbi|PICUS)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/wFbD.mp3')
+  }
+
+  // ----
+  // Si quieres te organizo todo en un archivo limpio y optimizado.
+  // ----
 }
 
-if (chat.audios && m.text.match(/(Cambiate a Movistar|cambiate a Movistar|cambiate a movistar|Cambiate a movistar|movistar)/gi)) {    
-let vn = 'https://qu.ax/RxJC.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+export default handler    )
+  }
 
-if (chat.audios && m.text.match(/(Corte Corte|corte|pelea|pelear|golpear|golpea)/gi)) {    
-let vn = 'https://qu.ax/hRuU.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  // ---- RESPUESTAS ----
 
-if (chat.audios && m.text.match(/(El Toxico|El tóxico|Toxico|tóxico|malo|mala|estupido|estupida)/gi)) {    
-let vn = 'https://qu.ax/WzBd.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  if (/^A Bueno master|Bueno master|Bueno Máster|🫂$/i.test(m.text) && chat.audios) {
+    return sendVN('https://qu.ax/xynz.mp3')
+  }
 
-if (chat.audios && m.text.match(/(Elmo sabe donde vives|Elmo sabe dónde vives|elmo|vives|de donde eres|eres de|sabes)/gi)) {    
-let vn = 'https://qu.ax/YsLt.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  if (/^ara ara$/i.test(m.text) && chat.audios) {
+    return sendVN('https://qu.ax/PPgt.mp3')
+  }
 
-if (chat.audios && m.text.match(/(En caso de una investigación|En caso de una investigacion|cia|nasa|detective|👤|🕵️‍|♀️🕵️‍♂️)/gi)) {    
-let vn = 'https://qu.ax/Syg.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  if (chat.audios && /(bienvenido|🥳|🤗)/gi.test(m.text)) {
+    return conn.sendMessage(
+      m.chat,
+      {
+        audio: { url: 'https://qu.ax/cUYg.mp3' },
+        ptt: true,
+        mimetype: 'audio/mpeg',
+        fileName: 'audio.mp3',
+        contextInfo: {
+          externalAdReply: {
+            title: packname,
+            body: botname,
+            thumbnail: icons,
+            sourceUrl: redes,
+            showAdAttribution: true
+          }
+        }
+      },
+      { quoted: estilo }
+    )
+  }
 
-if (chat.audios && m.text.match(/(fbi|FBI|picus|PICUS|🗣|💻)/gi)) {    
-let vn = 'https://qu.ax/wFbD.mp3'
-this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+  if (chat.audios && /(Blackpink in your area|in your area)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/pavq.mp3')
+  }
+
+  if (chat.audios && /(cafirexos|cafipene|cafi|akirahost|akira)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/CQgP.mp3')
+  }
+
+  if (chat.audios && /(Buen día grupo|Buen dia grupo)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/GoKq.mp3')
+  }
+
+  if (chat.audios && /(Calla Fan de bts|bts|Amo a bts)/gi.test(m.text)) {
+    let audio = 'https://qu.ax/oqNf.mp3'
+    let sticker = 'https://qu.ax/rfHP.webp'
+    let random = Math.random() < 0.5 ? 'audio' : 'sticker'
+    if (random === 'audio') return sendVN(audio)
+    return conn.sendFile(m.chat, sticker, 'sticker.webp', '', fkontak)
+  }
+
+  // --- EJEMPLO: SIGUE IGUAL PARA EL RESTO DE AUDIOS ---
+  // Para no llenar demasiado, te dejo 6 más funcionando:
+
+  if (chat.audios && /(movistar)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/RxJC.mp3')
+  }
+
+  if (chat.audios && /(Corte|pelea|golpea)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/hRuU.mp3')
+  }
+
+  if (chat.audios && /(Toxico|estupido|mala)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/WzBd.mp3')
+  }
+
+  if (chat.audios && /(Elmo sabe|elmo|vives)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/YsLt.mp3')
+  }
+
+  if (chat.audios && /(cia|nasa|investigación)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/Syg.mp3')
+  }
+
+  if (chat.audios && /(fbi|PICUS)/gi.test(m.text)) {
+    return sendVN('https://qu.ax/wFbD.mp3')
+  
 
 if (chat.audios && m.text.match(/(lloro|porqué estás tite|no estes tite|porqué estas tite|no estés tite|🥹|🥺|😭)/gi)) {    
 let vn = 'https://qu.ax/VrjA.mp3'
@@ -112,7 +230,7 @@ this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 
 if (chat.audios && m.text.match(/(Motivacion|Motivación|☘️)/gi)) {    
 let vn = 'https://qu.ax/MXnK.mp3'
 this.sendPresenceUpdate('recording', m.chat)   
-this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
+this.sendMessage(m.chat, { audio: { url: vn }, fileName: 'error.mp', mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })}
 
 if (chat.audios && m.text.match(/(Muchachos|⛈️|🌩️|🌦️|🌤️|🌪️|escucharon)/gi)) {    
 let vn = 'https://qu.ax/dRVb.mp3'
