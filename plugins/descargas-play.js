@@ -81,7 +81,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     else if (command === 'playvideo') {
       try {
-        const apiUrl = `https://api.stellarwa.xyz/dow/ytmp4?url=${encodeURIComponent(url)}&apikey=Shadow_Core`
+        const apiUrl = `https://api.yupra.my.id/api/downloader/ytmp4?url=${encodeURIComponent(url)}`,
         const res = await fetch(apiUrl)
         const json = await res.json()
 
