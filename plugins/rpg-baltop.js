@@ -1,40 +1,40 @@
-let handler = async (m, { conn, args, participants }) => {
-    // Variables de respaldo por si no existen
+let handler = async (m, { conn, args }) => {
     const emoji = global.emoji || "💰"
-    const moneda = global.moneda || "DOLARES💶"
+    const moneda = global.moneda || "YEN"
 
-    // Obtener usuarios de la base de datos
-    let users = Object.entries(global.db.data.users).map(([jid, data]) => {
-        return { jid, ...data }
-    })
+    // Cargar usuarios globales
+    let users = Object.entries(global.db.data.users).map(([jid, user]) => ({
+        jid,
+        name: user.name || "Usuario",
+        coin: user.coin || 0,
+        bank: user.bank || 0
+    }))
 
     // Ordenar por dinero total
-    let sorted = users.sort((a, b) => {
-        return ((b.coin || 0) + (b.bank || 0)) - ((a.coin || 0) + (a.bank || 0))
-    })
+    users.sort((a, b) => (b.coin + b.bank) - (a.coin + a.bank))
 
-    // Cuántos mostrar
-    let len = args[0] ? Math.min(10, Number(args[0])) : 10
+    // Cantidad a mostrar
+    let len = args[0] ? Math.min(10, parseInt(args[0])) : 10
 
-    let text = `「${emoji}」*Top ${len} usuarios con más ${moneda}*\n\n`
+    let text = `「${emoji}」 *Top ${len} usuarios con más ${moneda}*\n\n`
 
-    for (let i = 0; i < len && i < sorted.length; i++) {
-        let u = sorted[i]
-        let total = (u.coin || 0) + (u.bank || 0)
+    for (let i = 0; i < len && i < users.length; i++) {
+        let u = users[i]
+        let total = u.coin + u.bank
 
-        // Obtener nombre (funciona incluso si no está en el grupo)
-        let name = await conn.getName(u.jid).catch(_ => "Usuario")
+        // Obtener nombre real desde WhatsApp
+        let name = await conn.getName(u.jid).catch(_ => u.name)
 
-        text += `✰ ${i + 1} » *${name}*\n   Total → *¥${total} ${moneda}*\n\n`
+        text += `🏅 *${i + 1}.* ${name}
+   ➤ Total: *¥${total} ${moneda}*\n\n`
     }
 
-    await conn.reply(m.chat, text.trim(), m)
+    return conn.reply(m.chat, text.trim(), m)
 }
 
 handler.help = ['baltop']
 handler.tags = ['rpg']
 handler.command = ['baltop', 'eboard']
 handler.group = true
-handler.register = true
 
 export default handler
