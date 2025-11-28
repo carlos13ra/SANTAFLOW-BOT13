@@ -1,8 +1,13 @@
-let handler = async (m, { conn, text }) => {
+// VARIABLES QUE FALTABAN
+const icono = "https://i.postimg.cc/pTm6Z0fw/1754253021526.jpg"
+const emojis = "✔️"
+
+let handler = async (m, { conn }) => {
   let user = global.db.data.users[m.sender]
 
   let nombre = user.name || 'Sin nombre'
   let edad = user.age || 'Desconocida'
+
   let pp
   try {
     pp = await conn.profilePictureUrl(m.sender, 'image')
@@ -10,6 +15,7 @@ let handler = async (m, { conn, text }) => {
     pp = icono
   }
 
+  // Eliminar registro
   user.registered = false
 
   await conn.sendMessage(m.chat, {
@@ -33,7 +39,7 @@ let handler = async (m, { conn, text }) => {
         thumbnailUrl: pp,
         mediaType: 1,
         renderLargerThumbnail: true,
-        sourceUrl: pp
+        sourceUrl: "https://whatsapp.com" // siempre debe ser un enlace válido
       }
     }
   }, { quoted: m })
