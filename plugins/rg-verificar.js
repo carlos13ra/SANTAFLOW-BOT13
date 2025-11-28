@@ -1,17 +1,58 @@
+//━━━━━━━━━━━━━━━━━━━//
+//  REGISTRO SANTAFLOW BOT (OPTIMIZADO)
+//━━━━━━━━━━━━━━━━━━━//
+
 import db from '../lib/database.js'
 import fs from 'fs'
 import PhoneNumber from 'awesome-phonenumber'
-import { createHash } from 'crypto'  
+import { createHash } from 'crypto'
 import fetch from 'node-fetch'
 
-let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
+/*━━━━━━━━━━━━━━━━━━━━━━
+ 🔥 VARIABLES NECESARIAS
+━━━━━━━━━━━━━━━━━━━━━━*/
+
+// Canal de difusion
+const channelRD = {
+  id: '120363404087331895@newsletter',
+  name: '⸸ 🎧「 sᴀɴᴛᴀғʟᴏᴡ ✦ ᴏғɪᴄɪᴀʟ 」💫 ⸸࣭'
+};
+
+// Redes sociales / link principal
+const redes = 'https://facebook.com'
+
+// Moneda
+const moneda = '💰'
+
+// Contacto citado
+const fkontak = {
+  key: {
+    participants: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast',
+    fromMe: false
+  },
+  message: {
+    contactMessage: {
+      displayName: 'SANTA FLOW BOT',
+      vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;Santaflow;;;\nFN:Santaflow\nEND:VCARD`
+    }
+  }
+};
+
+const Reg = /\|?(.*?)[.|] *([0-9]+)$/i;
+
+/*━━━━━━━━━━━━━━━━━━━━━━
+ 🔥 HANDLER PRINCIPAL
+━━━━━━━━━━━━━━━━━━━━━━*/
 
 let handler = async function (m, { conn, text, usedPrefix, command }) {
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  let pp = await conn.profilePictureUrl(who, 'image').catch((_) => 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg')
-  let user = global.db.data.users[m.sender]
-  let name2 = conn.getName(m.sender)
+  let who = m.mentionedJid?.[0] || (m.fromMe ? conn.user.jid : m.sender)
+  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg')
 
+  let user = global.db.data.users[m.sender]
+  let name2 = conn.getName(m.sender) || "Usuario"
+
+  // BIO
   let bio
   try {
     const info = await conn.fetchStatus(who)
@@ -20,155 +61,143 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     bio = "Sin biografía disponible"
   }
 
+  /*━━━━━━━━━━━━━━━━━━━━━━
+   🔥 YA REGISTRADO
+  ━━━━━━━━━━━━━━━━━━━━━━*/
+
   if (user.registered) {
     const botones = [
-      { buttonId: `${usedPrefix}ping`, buttonText: { displayText: '̥ໍ᮫۪࣭۫𝆬𝆬꒰᩠̥ໍ۪ ᴘɪɴɢ ꒱᩠̥ໍ̥' }, type: 1 },
-      { buttonId: `${usedPrefix}unreg`, buttonText: { displayText: '✿〫𝆬 ᮫ᨗ ᴇʟɪᴍɪɴᴀʀ ʀᴇɢɪsᴛʀᴏ ۫✿ꪴᮬ๋۪۪𝆬ໍ' }, type: 1 },
+      { buttonId: `${usedPrefix}ping`, buttonText: { displayText: '🧡 ᴘɪɴɢ' }, type: 1 },
+      { buttonId: `${usedPrefix}unreg`, buttonText: { displayText: '💥 ᴇʟɪᴍɪɴᴀʀ ʀᴇɢɪsᴛʀᴏ' }, type: 1 },
     ];
 
-    return await conn.sendMessage(m.chat, {
-      image: { url: 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg' },
-      caption: '   ꒰🥭⚠️ `ＡＶＩＳＯ` ⚠️🎵꒱ ',
-      mentions: [m.sender],
-      footer: `┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-
-(｡>﹏<｡) 💦  
-*Ya cuentas con un registro activo...*  
-
-🔥 ¿𝒒𝒖𝒊𝒆𝒓𝒆𝒔 𝒓𝒆𝒈𝒊𝒔𝒕𝒓𝒂𝒓𝒕𝒆 𝒏𝒖𝒆𝒗𝒂𝒎𝒆𝒏𝒕𝒆?  
-
-🥭 Usa *#unreg* para borrar tu registro y comenzar otra vez.  
-
-┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-૮₍´｡• ᵕ •｡\`₎ა 👻 𝒕𝒆 𝒆𝒔𝒑𝒆𝒓𝒂𝒓𝒆𝒎𝒐𝒔 ~`,
-      buttons: botones,
-      headerType: 4,
-      contextInfo: {
-        mentionedJid: [m.sender],
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: channelRD.id,
-          serverMessageId: 100,
-          newsletterName: channelRD.name
+    return await conn.sendMessage(
+      m.chat,
+      {
+        image: { url: pp },
+        caption: '⚠️ *Aviso*\n\nYa tienes un registro activo.\nUsa *#unreg* para borrar tu registro.',
+        mentions: [m.sender],
+        buttons: botones,
+        headerType: 4,
+        contextInfo: {
+          mentionedJid: [m.sender],
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: channelRD.id,
+            serverMessageId: 100,
+            newsletterName: channelRD.name
+          }
         }
-      }
-    }, { quoted: fkontak });
- }
-
-  if (!Reg.test(text)) {
-     const botones = [
-       { buttonId: `${usedPrefix}reg ${name2}.18`, buttonText: { displayText: '̥ໍ᮫۪࣭۫𝆬𝆬꒰᩠̥ໍ۪ ᴀᴜᴛᴏ ᴠᴇʀɪғɪᴄᴀʀ ꒱᩠̥ໍ̥' }, type: 1 },
-       { buttonId: `${usedPrefix}menu`, buttonText: { displayText: '✿〫𝆬 ᮫ᨗ ᴍᴇɴᴜ ᴄᴏᴍᴘʟᴛ ۫✿ꪴᮬ๋۪۪𝆬ໍ'  }, type: 1 },
-     ];
-
-    return await conn.sendMessage(m.chat, {
-      image: { url: 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg' },
-      caption: '    `ＡＶＩＳＯ:`',
-      mentions: [m.sender],
-      footer: `｡☆✼★━━━━━━━━━━━━★✼☆｡  
-❀ ₊˚⊹ ᴏᴏᴘꜱ~ ᴄᴏᴍᴀɴᴅᴏ ɪɴᴄᴏʀʀᴇᴄᴛᴏ (｡•́︿•̀｡)  
-┈┈┈┈┈┈┈┈┈┈  
-↳ 𝑼́𝒔𝒂𝒍𝒐 𝒂𝒔𝒊́:  
-   ${usedPrefix + command} nombre.edad  
-
-🐰 𝑬𝒋𝒆𝒎𝒑𝒍𝒐:  
-> ${usedPrefix + command} ${name2}.18  
-┈┈┈┈┈┈┈┈┈┈  
-☘️ 𝒏𝒐 𝒕𝒓𝒊𝒔𝒕𝒆~ 𝒗𝒖𝒆𝒍𝒗𝒆 𝒂 𝒊𝒏𝒕𝒆𝒏𝒕𝒂𝒓 ꒰ᐢ. .ᐢ꒱
-｡☆✼★━━━━━━━━━━━━★✼☆｡`,
-      buttons: botones,
-      headerType: 4,
-      contextInfo: {
-        mentionedJid: [m.sender],
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: channelRD.id,
-          serverMessageId: 100,
-          newsletterName: channelRD.name
-        }
-      }
-    }, { quoted: fkontak });
+      },
+      { quoted: fkontak }
+    );
   }
 
-  let hora = new Date().toLocaleTimeString('es-PE', { timeZone: 'America/Lima' });
-    
-  let fechaObj = new Date();
-  let fecha = fechaObj.toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Lima' });
-  let dia = fechaObj.toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' });
+  /*━━━━━━━━━━━━━━━━━━━━━━
+   🔥 FORMATO INCORRECTO
+  ━━━━━━━━━━━━━━━━━━━━━━*/
 
-  let [_, name, splitter, age] = text.match(Reg)
-  if (!name) return m.reply(`✦₊˚ 🎀꒰ 🍓 ꒱🎀 ₊˚✦\n(｡>﹏<｡)💦 *El nombre no puede estar vacío*`)
-  if (!age) return m.reply(`✦₊˚ 🎀꒰ 🍓 ꒱🎀 ₊˚✦\n(≧﹏≦) *La edad no puede estar vacía*`)
-  if (name.length >= 100) return m.reply(`✦₊˚ 🎀꒰ 🍓 ꒱🎀 ₊˚✦\n(๑•﹏•) *El nombre es demasiado largo...*`)
-  age = parseInt(age)
-  if (age > 1000) return m.reply(`✦₊˚ 🎀꒰ 🍓 ꒱🎀 ₊˚✦\n(´｡• ᵕ •｡\`) 💮 *Wow~ el abuelito quiere jugar al bot*`)
-  if (age < 5) return m.reply(`✦₊˚ 🎀꒰ 🍓 ꒱🎀 ₊˚✦\n(｡•́︿•̀｡) *Awww~ un abuelito bebé jsjs* 🍼💕`)
+  if (!Reg.test(text)) {
+    const botones = [
+      { buttonId: `${usedPrefix}reg ${name2}.18`, buttonText: { displayText: '🧡 ᴀᴜᴛᴏ ᴠᴇʀɪғɪᴄᴀʀ' }, type: 1 },
+      { buttonId: `${usedPrefix}menu`, buttonText: { displayText: '📜 ᴍᴇɴᴜ' }, type: 1 },
+    ];
 
+    return conn.sendMessage(
+      m.chat,
+      {
+        image: { url: pp },
+        caption: `⚠️ *Formato incorrecto*\n\nUsa:\n${usedPrefix + command} nombre.edad\nEjemplo:\n${usedPrefix + command} ${name2}.18`,
+        buttons: botones,
+        headerType: 4,
+        mentions: [m.sender]
+      },
+      { quoted: fkontak }
+    );
+  }
+
+  /*━━━━━━━━━━━━━━━━━━━━━━
+   🔥 PROCESO DE REGISTRO
+  ━━━━━━━━━━━━━━━━━━━━━━*/
+
+  let [_, name, age] = text.match(Reg);
+  age = parseInt(age);
+
+  if (!name) return m.reply("⚠️ El nombre no puede estar vacío.");
+  if (!age) return m.reply("⚠️ La edad no puede estar vacía.");
+  if (name.length > 100) return m.reply("⚠️ El nombre es demasiado largo.");
+  if (age < 5) return m.reply("⚠️ Muy pequeño para registrarte.");
+  if (age > 100) return m.reply("⚠️ Edad inválida.");
+
+  // Guardado
   user.name = `${name} ✓`
   user.age = age
-  user.regTime = + new Date      
+  user.regTime = +new Date()
   user.registered = true
   user.coin = (user.coin || 0) + 40
   user.exp = (user.exp || 0) + 300
   user.joincount = (user.joincount || 0) + 20
 
+  let hora = new Date().toLocaleTimeString('es-PE', { timeZone: 'America/Lima' })
+  let fechaObj = new Date()
+  let fecha = fechaObj.toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Lima' })
+  let dia = fechaObj.toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
+
   let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
-  
 
-  let regbot = `≡══════════════════════════≡
-✿⊹⊱⋆彡 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 • 𝐂𝐎𝐌𝐏𝐋𝐄𝐓𝐎 彡⋆⊰⊹✿
-≡══════════════════════════≡
+  let regbot = `
+≡══════════════════════≡
+🎉 *REGISTRO COMPLETO* 🎉
+≡══════════════════════≡
 
+• 👤 Nombre: ${name}
+• ✨ Usuario: ${name2}
+• 📱 Número: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+• 🐰 Edad: ${age}
+• 📖 Bio: ${bio}
 
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ🍓̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔* ɴᴏᴍʙʀᴇ »  ${name}
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ💫̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ᴜsᴇʀ »  ${name2}
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ📱̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ɴᴜᴍᴇʀᴏ »  ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ🐰̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ᴇᴅᴀᴅ »  ${age} añitos ฅ^•ﻌ•^ฅ
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ🕸️̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ʙɪᴏ »  ${bio}
-──────────────────
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ📖̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ғᴇᴄʜᴀ »  ${fecha}
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ⌛̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ʜᴏʀᴀ »  ${hora}
-> *ꛊֵ໋𝅭࣫𝂺ֺׅ🌙̶ᮢ〪〫ꨩ֔ᦡ࣫꒱ֵ֔*  ᴅɪᴀ » ${dia}
+📅 Fecha: ${fecha}
+⏰ Hora: ${hora}
+🌙 Día: ${dia}
 
-\`\`\`    ּ͜⌒໊݂݁͜    ݊ ּ͜⌒໊݂݁͜⏜݄݊͜ ͜⏜݆ׄ͜⌒໊݂͜.    ּ͜⌒໊݂݁͜\`\`
-\`\`\`   ͜છֶ̤͝🥭 𝐑𝐄𝐂𝐎𝐌𝐏𝐄𝐍𝐒𝐀𝐒 🥭છ̤͜  \`\`\`
-\`\`\`︶ִֶָ⏝︶ִֶָ⏝˖ ࣪ ୨✧୧ ࣪ ˖⏝ִֶָ︶⏝ִֶָ︶\`\`\`
-✧ 💰 +40 → ${moneda}
-✧ 🔮 +300 → ᴇxᴘ
-✧ 💎 +20 → ᴛᴏᴋᴇɴs
-──────────────────`.trim();
+🎁 *RECOMPENSAS* :
+${moneda} +40  
+🔮 +300 EXP  
+💎 +20 TOKENS
+──────────────────`;
 
-await m.react?.('📩')
-await conn.sendMessage(
-  m.chat,
-  {
-    image: { url: pp },
-    caption: regbot,
-    footer: 'xd',
-    contextInfo: {
-      mentionedJid: [m.sender],
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: channelRD.id,
-        serverMessageId: 100,
-        newsletterName: channelRD.name
-      },
-      externalAdReply: {
-        title: '❁︩︪•°ֺ໋۪݊🎵 ʀᴇɢɪsᴛʀᴏ - sᴀɴᴛᴀғʟᴏᴡ - ʙᴏᴛ ☁️°໋•︪︩❁',
-        body: '꒰🥭꒱ ᴛᴜ ᴄᴜᴇɴᴛᴀ ʜᴀ ꜱɪᴅᴏ ᴀᴄᴛɪᴠᴀᴅᴀ ᴄᴏɴ ᴇxɪᴛᴏ `☯︎ sᴀɴᴛᴀғʟᴏᴡ • ʙʏ: ℂ𝕒𝕣𝕝𝕠𝕤.ℝ.𝕍`',
-        mediaType: 1,
-        thumbnailUrl: 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg',
-        mediaUrl: redes,
-        sourceUrl: redes,
-        renderLargerThumbnail: false
+  await m.react?.('📩')
+
+  return conn.sendMessage(
+    m.chat,
+    {
+      image: { url: pp },
+      caption: regbot,
+      footer: 'Registro Santaflow Bot',
+      contextInfo: {
+        mentionedJid: [m.sender],
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: channelRD.id,
+          serverMessageId: 100,
+          newsletterName: channelRD.name
+        },
+        externalAdReply: {
+          title: '🎵 Registro completado',
+          body: 'Tu cuenta ha sido activada exitosamente.',
+          mediaType: 1,
+          thumbnailUrl: pp,
+          mediaUrl: redes,
+          sourceUrl: redes
+        }
       }
-    }
-  },
-  { quoted: fkontak });
- };
+    },
+    { quoted: fkontak }
+  );
+};
 
 handler.help = ['reg']
 handler.tags = ['rg']
-handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar'] 
+handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar']
 
 export default handler
