@@ -1,6 +1,10 @@
-// VARIABLES QUE FALTABAN
+// VARIABLES IMPORTANTES
 const icono = "https://i.postimg.cc/pTm6Z0fw/1754253021526.jpg"
 const emojis = "✔️"
+
+// Tu canal oficial
+const newsletterJid = '120363404087331895@newsletter'
+const newsletterName = '⸸ 🎧「 sᴀɴᴛᴀғʟᴏᴡ ✦ ᴏғɪᴄɪᴀʟ 」💫 ⸸࣭'
 
 let handler = async (m, { conn }) => {
   let user = global.db.data.users[m.sender]
@@ -8,6 +12,7 @@ let handler = async (m, { conn }) => {
   let nombre = user.name || 'Sin nombre'
   let edad = user.age || 'Desconocida'
 
+  // Imagen del usuario
   let pp
   try {
     pp = await conn.profilePictureUrl(m.sender, 'image')
@@ -32,14 +37,22 @@ let handler = async (m, { conn }) => {
 𝐩𝐚𝐫𝐚 𝐫𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐫𝐭𝐞 𝐧𝐮𝐞𝐯𝐚𝐦𝐞𝐧𝐭𝐞.
 ━━━━━━━━━━━━━━━━━━━━`,
     mentions: [m.sender],
+
     contextInfo: {
+      // *** AQUÍ VA TU CANAL ***
+      forwardedNewsletterMessageInfo: {
+        newsletterJid,
+        newsletterName,
+        serverMessageId: -1
+      },
+
       externalAdReply: {
         title: `⚡ Registro eliminado correctamente ${emojis}`,
         body: `🧪 Nombre: ${nombre} • Edad: ${edad} años`,
         thumbnailUrl: pp,
         mediaType: 1,
         renderLargerThumbnail: true,
-        sourceUrl: "https://whatsapp.com" // siempre debe ser un enlace válido
+        sourceUrl: "https://whatsapp.com"
       }
     }
   }, { quoted: m })
