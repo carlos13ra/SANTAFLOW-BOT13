@@ -27,7 +27,7 @@ return res.data
 console.log(`Error : ${e}`)
 }}
   
-global.creador = 'wa.me/51984169553'
+global.creador = 'wa.me/51978385249'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.namechannel = '▐▐ ✦ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
 global.namechannel2 = '▐▐ ✦ 𝐒𝐚𝐧𝐭𝐚𝐟𝐥𝐨𝐰 - 𝐁𝐎𝐓 - 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 ✦ ▐▐'
