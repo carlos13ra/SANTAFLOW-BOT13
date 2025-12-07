@@ -59,7 +59,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     }).join('\n\n')
 
     let menuText = `
-❉｡･:*˚:✧｡  𝙶𝙾𝙹𝙾 - ʙᴏᴛ ｡✧:˚*:･｡❉
+❉｡･:*˚✧❄️ sᴀɴᴛᴀɢʟᴏᴡ - ʙᴏᴛ ❄️✧˚*:･｡❉
 ⊱ ────── {.⋅ ✯ ⋅.} ────── ⊰
 
 ☁️ ${ucapan()} @${userId.split('@')[0]} ⚡
@@ -91,7 +91,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ${secciones}
 `.trim()
 
- await m.react('🎋')
+ await m.react('❄️')
 await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
