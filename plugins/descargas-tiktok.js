@@ -1,0 +1,94 @@
+import fetch from 'node-fetch';
+
+var handler = async (m, { conn, args, usedPrefix, command }) => {
+  if (!args[0]) {
+    return conn.reply(m.chat, `*✨ debes poner un link de TikTok🔥*`, m, fake);
+  }
+
+  try {
+    const tiktokData = await tiktokdl(args[0]);
+
+    if (!tiktokData || !tiktokData.status || !tiktokData.data) {
+      return conn.reply(m.chat, "❌ Uff... No pude traer tu video onichan 😿", m);
+    }
+
+    const thumbRes = await fetch('https://qu.ax/QvZCV.jpg');
+    const thumbBuffer = await thumbRes.buffer();
+
+    const fkontak = {
+      key: {
+        participants: "0@s.whatsapp.net",
+        remoteJid: "status@broadcast",
+        fromMe: false,
+        id: "Halo"
+      },
+      message: {
+        locationMessage: {
+          name: ` • DESCARGA COMPLETA 👻•`,
+          jpegThumbnail: thumbBuffer
+        }
+      },
+      participant: "0@s.whatsapp.net"
+    };
+
+    const data = tiktokData.data;
+    const videoURL = data.meta.media[0]?.hd || data.meta.media[0]?.org;
+
+    if (videoURL) {
+      await conn.sendFile(
+        m.chat,
+        videoURL,
+        "tiktok.mp4",
+        `❐ 🍧 • *𝐓𝐢𝐭𝐮𝐥𝐨:* ${data.title || 'Sin descripción uwu'}
+
+*~ ＥＳＴＡＤＯ ~*
+❐ 🍂 • *𝐀𝐮𝐭𝐨𝐫* ➭ ${data.author?.nickname || 'Desconocido'} (${data.author?.username || 'N/A'})
+❐ 🆔 • *ID Autor:* ${data.author?.id || 'N/A'}
+❐ 🏳️ • *Región:* ${data.region || 'N/A'}
+❐ 📅 • *Publicado:* ${data.published || 'Desconocido'}
+
+*~ ＳＴＡＴＳ ~*
+❐ 🔥 • *Likes:* ${data.like || '0'}
+❐ 💙 • *Comentarios:* ${data.comment || '0'}
+❐ 💥 • *Vistas:* ${data.repro || '0'}
+❐ 🌾 • *Compartido:* ${data.share || '0'}
+❐ 📥 • *Descargas:* ${data.download || '0'}
+
+*~ ＭＵＳＩＣＡ ~*
+❐ 🎶 • *Título:* ${data.music?.title || 'Desconocido'}
+❐ 👤 • *Autor:* ${data.music?.author || 'Desconocido'}
+❐ ⏳ • *Duración Música:* ${data.music?.duration || 'N/A'} seg
+
+*~ ＶＩＤＥＯ ~*
+❐ 📺 • *Duración:* ${data.duration || '0'} seg
+❐ ⚡ • *Tamaño HD:* ${data.meta.media[0]?.size_hd || 'N/A'}
+❐ 📂 • *Tamaño Original:* ${data.meta.media[0]?.size_org || 'N/A'}
+❐ 🚫 • *Tamaño con marca de agua:* ${data.meta.media[0]?.size_wm || 'N/A'}
+
+*~ ＩＮＦＯ ＡＰＩ ~*
+❐ 👨‍💻 • *API By:* ${tiktokData.creator || 'Delirius'}
+❐ ⚙️ • *Proceso:* ${(tiktokData.process * 100).toFixed(2)}%`,
+        fkontak
+      );
+    } else {
+      return conn.reply(m.chat, "❌ No pude descargarlo nya~ 😿", m);
+    }
+  } catch (error1) {
+    return conn.reply(m.chat, `❌ Error inesperado: ${error1.message}`, m);
+  }
+};
+
+handler.help = ['tiktok'].map((v) => v + ' *<link>*');
+handler.tags = ['descargas'];
+handler.command = ['tiktok', 'tt'];
+//handler.register = true;
+//handler.coin = 2;
+handler.limit = true;
+
+export default handler;
+
+async function tiktokdl(url) {
+  let api = `https://api.delirius.store/download/tiktok?url=${encodeURIComponent(url)}`;
+  let response = await (await fetch(api)).json();
+  return response;
+}

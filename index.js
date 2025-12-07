@@ -105,7 +105,7 @@ async function showBanner() {
                 borderStyle: 'classic',
                 borderColor: 'cyanBright',
                 backgroundColor: 'black',
-                title: 'Rin Itoshi Bot',
+                title: 'Santaflow - Bot',
                 titleAlignment: 'center'
             }
         )
