@@ -55,9 +55,9 @@ global.logo = 'https://i.postimg.cc/Gpry5rSz/0x1900-000000-80-0-0.jpg'
 
 global.gp1 = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
 global.comunidad1 = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
-global.channel = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
-global.channel2 = 'httpom/channel/0029VbAtbPA84OmJSLiHis2U'
-global.md = 'https://github.com/carlos13ra/GOJO-BOT'
+global.channel = 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'
+global.channel2 = 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'
+global.md = 'https://github.com/carlos13ra/SANTAFLOW-BOT13'
 global.correo = 'carlosramirezvillanueva30@gmail.com'
 
 //✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
