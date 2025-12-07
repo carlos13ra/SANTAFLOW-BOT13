@@ -113,9 +113,9 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 }}, { quoted: m }
 
 global.icono = [
-'https://i.postimg.cc/TYH80qC5/86b21044fa7c743a9816b39ad251582f.jpg',
-'https://i.postimg.cc/qMWbgm1M/HD-wallpaper-satoru-gojo-gojo-gojo-satoru-jujutsu-kaisen-satoru-satoru-gojo-yuji-itadori.jpg',
-'https://i.postimg.cc/Gpry5rSz/0x1900-000000-80-0-0.jpg'
+'https://files.cloudkuimages.guru/images/40712b463b6a.jpg',
+'https://files.cloudkuimages.guru/images/8a7382cafd39.jpg',
+'https://files.cloudkuimages.guru/images/093692918b47.jpg'
 ].getRandom()
 
 
