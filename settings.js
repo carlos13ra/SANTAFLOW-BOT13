@@ -25,27 +25,27 @@ global.libreria = 'Baileys'
 global.baileys = 'V 6.7.17' 
 global.vs = '2.2.5'
 global.nameqr = '✦⃟🎧 Santaflow•Bot 🎧⃟✦'
-global.namebot = '⸸ 𝐆𝐎𝐉𝐎•𝐁𝐎𝐓 ⸸'
+global.namebot = '⸸ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 • 𝐁𝐎𝐓 ⸸'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
 global.shadowJadibts = true
 
 //✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
-global.packname = '🏆 ⌬ 𝐆𝐨𝐣𝐨 𝑩𝒐𝒕 ⌬ 💥'
-global.botname = '☘️ 𝐆𝐎𝐉𝐎 𝐁𝐎𝐓'
-global.wm = '◈𝐆𝐎𝐉𝐎 𝐁𝐎𝐓◈'
-global.author = '⩇⃟🔋 𝑴𝒂𝒅𝒆 𝒃𝒚 𝐜𝐚𝐫𝐥𝐨𝐬.𝐫𝐯 ⩇⃟⚡'
-global.dev = '☘️ ミ💨 》𝑪𝑨𝑹𝑳𝑶𝑺.𝑹𝑽《 💥ミ 🌀'
+global.packname = '🎶 ⌬ 𝑺𝒂𝒏𝒕𝒂𝒇𝒍𝒐𝒘 𝑩𝒐𝒕 ⌬ 🎵'
+global.botname = '🎵 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 ❤️'
+global.wm = '◈ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 ◈'
+global.author = '⩇⃟🥭 𝑴𝒂𝒅𝒆 𝒃𝒚 𝐜𝐚𝐫𝐥𝐨𝐬.𝐫𝐯 ⩇⃟🎵'
+global.dev = '🎶 ミ🎵 》𝑪𝑨𝑹𝑳𝑶𝑺.𝑹𝑽《 🎶ミ ❤️'
 global.bot = '𝑺𝒂𝒏𝒕𝒂𝒇𝒍𝒐𝒘 𝒃𝒐𝒕'
-global.club = '🌱 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 carlos•Core 𝖢𝗅𝗎𝖻 ⚡'
-global.textbot = 'ɢᴏᴊᴏ ʙᴏᴛ✦ 𝕊ℍ𝔸𝔻𝕆𝕎•ℂ𝕆ℝ𝔼'
-global.etiqueta = '@sʜᴀᴅᴏᴡ°ᴄᴏʀᴇ'
+global.club = '🎵 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 carlos•Core 𝖢𝗅𝗎𝖻 🎶'
+global.textbot = 'sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ ✦ ℂ𝔸ℝ𝕃𝕆𝕊•ℝ𝕍'
+global.etiqueta = '@ᴄ`ᴀʀʟᴏs ʀ`ᴀᴍɪʀᴇᴢ ° ғ`ᴄ'
 
 //✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
 global.moneda = 'ᴇᴜʀᴏs💶'
-global.welcom1 = '💤 Bienvenido/a al grupo⚡\n❍ Edita con el comando *setwelcome*'
+global.welcom1 = '💤 Bienvenido/a al grupo🎶\n❍ Edita con el comando *setwelcome*'
 global.welcom2 = '🔥 un miembro ha salido del partido🔥\n❍ Edita con el comando *setbye*'
 global.banner = 'https://i.postimg.cc/fbgJW3ND/93f25ee53428103d24f795274ad12ab3.jpg'
 global.avatar = 'https://i.postimg.cc/xjMhMVbG/personaje-satoru-gojo-jujutsu-kaisen-7799.jpg'
