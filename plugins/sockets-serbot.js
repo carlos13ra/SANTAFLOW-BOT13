@@ -123,37 +123,8 @@ return
 if (qr && mcode) {
 let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
 secret = secret.match(/.{1,4}/g)?.join("-")
-
-//txtCode = await conn.sendMessage(m.chat, {text : rtx2}, { quoted: m })
-    let txtCode = await conn.sendMessage(m.chat, {
-      image: { url: 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg' },
-      caption: rtx2,
-      contextInfo: {
-        mentionedJid: [m.sender],
-         isForwarded: true,
-         forwardedNewsletterMessageInfo: {
-           newsletterJid: channelRD.id,
-           serverMessageId: 100,
-           newsletterName: channelRD.name
-         },
-        isForwarded: true
-      }
-    }, { quoted: fkontak });
-
-codeBot = await conn.reply(m.chat, `${secret}*`, fkontak);
-//codeBot = await m.reply(secret)
-/*txtCode = await conn.sendMessage(
-  m.chat,
-  {
-    video: { url: "https://files.catbox.moe/z09oz9.mp4" },
-    gifPlayback: true,
-    caption: rtx2,
-    ...rcanal
-  },
-  { quoted: m }
-)
-
-codeBot = await conn.reply(m.chat, `*${secret}*`, m, fake);*/
+txtCode = await conn.sendMessage(m.chat, {text : rtx2}, { quoted: m })
+codeBot = await m.reply(secret)
 console.log(secret)
 }
 if (txtCode && txtCode.key) {
@@ -223,7 +194,7 @@ userJid = sock.authState.creds.me.jid || `${path.basename(pathshadowJadiBot)}@s.
 console.log(chalk.bold.cyanBright(`\n❒⸺⸺⸺⸺【• SUB-BOT •】⸺⸺⸺⸺❒\n│\n│ ❍ ${userName} (+${path.basename(pathshadowJadiBot)}) conectado exitosamente.\n│\n❒⸺⸺⸺【• CONECTADO •】⸺⸺⸺❒`))
 sock.isInit = true
 global.conns.push(sock)
-m?.chat ? await conn.sendMessage(m.chat, { text: isSubBotConnected(m.sender) ? `@${m.sender.split('@')[0]}, ya estás conectado, leyendo mensajes entrantes...` : `❀ Has registrado un nuevo *Sub-Bot!* [@${m.sender.split('@')[0]}]\n\n> Puedes ver la información del bot usando el comando *#infobot*`, mentions: [m.sender] }, { quoted: fkontak }) : ''
+m?.chat ? await conn.sendMessage(m.chat, { text: isSubBotConnected(m.sender) ? `@${m.sender.split('@')[0]}, ya estás conectado, leyendo mensajes entrantes...` : `❀ Has registrado un nuevo *Sub-Bot!* [@${m.sender.split('@')[0]}]\n\n> Puedes ver la información del bot usando el comando *#infobot*`, mentions: [m.sender] }, { quoted: m }) : ''
 }}
 setInterval(async () => {
 if (!sock.user) {
