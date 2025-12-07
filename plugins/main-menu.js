@@ -26,7 +26,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         'https://files.cloudkuimages.guru/videos/326dfe5c1e8c.mp4',
         'https://files.cloudkuimages.guru/videos/5f2faf729727.mp4',
         'https://files.cloudkuimages.guru/videos/ed679e08493c.mp4',
-        'https://files.catbox.moe/hwphsn.mp4'
+        'https://files.cloudkuimages.guru/videos/bb8b8cbf9d4e.mp4'
     ]
     let video = videos[Math.floor(Math.random() * videos.length)]
 
