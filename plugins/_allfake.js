@@ -70,10 +70,6 @@ global.waitttt = '⚽️ 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖�
 global.hotw = '*🐭 El contenido `NSFW` está desactivado en este grupo.*\n> Un administrador puede activarlo con el comando » *`#nsfw on`*';
 
 
-global.edadaleatoria = ['10', '28', '20', '40', '18', '21', '15', '11', '9', '17', '25'].getRandom();
-global.user2 = m.pushName || 'Anónimo';
-global.verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register'].getRandom();
-
 var canal = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'  
 var comunidad = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
 var git = 'https://github.com/carlos13ra'
@@ -123,7 +119,69 @@ global.icono = [
 ].getRandom()
 
 
-global.rcanal = {contextInfo: {forwardingScore: 2025, isForwarded: true, externalAdReply: {title: packname, body: author, sourceUrl: redes, thumbnailUrl: icono}}}
+global.rcanal = {
+  contextInfo: {
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: channelRD.id,
+      serverMessageId: 100,
+      newsletterName: channelRD.name,
+    },
+    externalAdReply: {
+      title: botname,
+      body: '',
+      mediaUrl: null,
+      description: null,
+      previewType: "PHOTO",
+      thumbnailUrl: icono,
+      mediaType: 1,
+      renderLargerThumbnail: false
+    },
+  },
+}
+
+global.rcanalx = {
+  contextInfo: {
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: channelRD.id,
+      serverMessageId: 101,
+      newsletterName: channelRD.name,
+    },
+    externalAdReply: {
+      title: botname,
+      body: '',
+      mediaUrl: null,
+      description: null,
+      previewType: "PHOTO",
+      thumbnailUrl: icono,
+      mediaType: 1,
+      renderLargerThumbnail: false
+    },
+  },
+}
+
+global.rcanalw = {
+  contextInfo: {
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: channelRD.id,
+      serverMessageId: 102,
+      newsletterName: channelRD.name,
+    },
+    externalAdReply: {
+      title: club,
+      body: '',
+      mediaUrl: null,
+      description: null,
+      previewType: "PHOTO",
+      thumbnailUrl: icono,
+      mediaType: 1,
+      renderLargerThumbnail: false
+    },
+  },
+}
+
 }
 
 export default handler
