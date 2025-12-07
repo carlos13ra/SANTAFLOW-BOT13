@@ -38,7 +38,7 @@ const { chain } = lodash
 const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 let { say } = cfonts
-/*
+
 console.log(chalk.bold.redBright(`\n▨────────────────────────▨`))
 console.log(chalk.magentaBright('\n🌱 Iniciando bot...'))
 console.log(chalk.bold.redBright(`\n▨────────────────────────▨`))
@@ -52,118 +52,7 @@ say('Made with By Carlos', {
 font: 'console',
 align: 'center',
 colors: ['cyan', 'magenta', 'yellow']
-})*/
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-async function showBanner() {
-    const title = `
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░░░░░░░░░
-░░░░░░░░▄▀░░░░░░░░░░░░▄░░░░░░░▀▄░░░░░░░
-░░░░░░░░█░░▄░░░░▄░░░░░░░░░░░░░░█░░░░░░░
-░░░░░░░░█░░░░░░░░░░░░▄█▄▄░░▄░░░█░▄▄▄░░░
-░▄▄▄▄▄░░█░░░░░░▀░░░░▀█░░▀▄░░░░░█▀▀░██░░
-░██▄▀██▄█░░░▄░░░░░░░██░░░░▀▀▀▀▀░░░░██░░
-░░▀██▄▀██░░░░░░░░▀░██▀░░░░░░░░░░░░░▀██░
-░░░░▀████░▀░░░░▄░░░██░░░▄█░░░░▄░▄█░░██░
-░░░░░░░▀█░░░░▄░░░░░██░░░░▄░░░▄░░▄░░░██░
-░░░░░░░▄█▄░░░░░░░░░░░▀▄░░▀▀▀▀▀▀▀▀░░▄▀░░
-░░░░░░█▀▀█████████▀▀▀▀████████████▀░░░░
-░░░░░░████▀░░███▀░░░░░░▀███░░▀██▀░░░░░░
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-    `.split('\n').map(line => chalk.hex('#00f7ff').bold(line)).join('\n')
-
-    const subtitle = chalk.hex('#ff3366').bold('✦ SANTAFLOW BOT ✦').padStart(50)
-    const poweredMsg = chalk.hex('#ffcc00').italic('🥭 powered by Carlos.R.V')
-    const aiMsg = chalk.hex('#00f7ff').bold('──────────────────────────────────────────────────────')
-    const tips = [
-        chalk.hex('#ffcc00')('⌬ Tip: Usa /menu para ver todas las funciones.'),
-        chalk.hex('#00f7ff')('✧ Sígueme en GitHub para ver updates.'),
-        chalk.hex('#ff3366')('⬡ Disfruta del poder de Santaflow Bot.')
-    ]
-    const loadingFrames = [
-        chalk.cyanBright('⠋ Inicializando módulos...'),
-        chalk.cyanBright('⠙ Inicializando módulos...'),
-        chalk.cyanBright('⠹ Inicializando módulos...'),
-        chalk.cyanBright('⠸ Inicializando módulos...'),
-        chalk.cyanBright('⠼ Inicializando módulos...'),
-        chalk.cyanBright('⠴ Inicializando módulos...'),
-        chalk.cyanBright('⠦ Inicializando módulos...'),
-        chalk.cyanBright('⠧ Inicializando módulos...'),
-        chalk.cyanBright('⠇ Inicializando módulos...'),
-        chalk.cyanBright('⠏ Inicializando módulos...')
-    ]
-
-    console.clear()
-   
-    console.log(
-        boxen(
-            title + '\n' + subtitle,
-            {
-                padding: 1,
-                margin: 1,
-                borderStyle: 'classic',
-                borderColor: 'cyanBright',
-                backgroundColor: 'black',
-                title: 'Santaflow - Bot',
-                titleAlignment: 'center'
-            }
-        )
-    )
-
-    say('Santaflow', {
-        font: 'block',
-        align: 'center',
-        colors: ['cyan', 'blue'],
-        background: 'transparent',
-        letterSpacing: 1,
-        lineHeight: 1
-    })
-    say('🍁 by Carlos', {
-        font: 'console',
-        align: 'center',
-        colors: ['yellow'],
-        background: 'transparent'
-    })
-    console.log('\n' + aiMsg + '\n')
-
-    for (let i = 0; i < 20; i++) {
-        process.stdout.write('\r' + loadingFrames[i % loadingFrames.length])
-        await sleep(80)
-    }
-    process.stdout.write('\r' + ' '.repeat(40) + '\r') 
-
-    console.log(
-        chalk.bold.blueBright(
-            boxen(
-                chalk.bold('¡Bienvenido a Santaflow Bot!\n') +
-                chalk.hex('#00f7ff')('El bot está arrancando, espera un momento...') +
-                '\n\n' +
-                tips.join('\n'),
-                {
-                    padding: 1,
-                    margin: 1,
-                    borderStyle: 'round',
-                    borderColor: 'magenta'
-                }
-            )
-        )
-    )
-
-    const symbols = [
-        chalk.hex('#ff3366')('✧'), chalk.hex('#00f7ff')('⌬'), chalk.hex('#ffcc00')('⬡'),
-        chalk.hex('#00f7ff')('✧'), chalk.hex('#ff3366')('⌬'), chalk.hex('#ffcc00')('⬡')
-    ]
-    let line = ''
-    for (let i = 0; i < 40; i++) {
-        line += symbols[i % symbols.length]
-    }
-    console.log('\n' + line + '\n')
-}
-await showBanner()
-
-protoType()
-serialize()
+})
 
 global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') {
 return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString();
