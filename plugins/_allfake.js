@@ -36,7 +36,7 @@ global.namecomu = '▐▐ 🎧 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖-𝐁𝐎𝐓
 global.listo = '✦❀ *Aquí tienes ฅ^•ﻌ•^ฅ* ❀✦'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-global.canalIdM = ["120363402079893698@newsletter", "120363402079893698@newsletter", "120363402079893698@newsletter"]
+global.canalIdM = ["120363404087331895@newsletter", "120363404087331895@newsletter", "120363404087331895@newsletter"]
 global.canalNombreM = ["𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 | ° 𝘊𝘏𝘈𝘕𝘕𝘌𝘓- 𝗢𝗙𝗜𝗖𝗜𝗔𝗟🧪꙰⃟⸙", "sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ | ° ᴄʜᴀɴɴᴇʟ - Official 🧪꙰⃟⸙"]
 global.channelRD = await getRandomChannel()
 
@@ -70,7 +70,7 @@ global.waitttt = '🎧 𝙀𝙣𝙫𝙞𝙖𝙣𝙙𝙤 𝙩𝙚𝙣 𝙥𝙖�
 global.hotw = '*🐭 El contenido `NSFW` está desactivado en este grupo.*\n> Un administrador puede activarlo con el comando » *`#nsfw on`*';
 
 
-var canal = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'  
+var canal = 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'  
 var comunidad = 'https://whatsapp.com/channel/0029Vb6iXGDISTkKY8fxUa39'
 var git = 'https://github.com/carlos13ra'
 var github = 'https://github.com/carlos13ra/SANTAFLOW-BOT13'
@@ -96,16 +96,16 @@ var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 
 global.packsticker = `
-🌸🍒✩₊˚.⋆☾⋆⁺₊✧
+🥭💫✩₊˚.⋆☾⋆⁺₊✧
 ✦ 𝕌𝕤𝕦𝕒𝕣𝕚𝕠: ${nombre}
 ✦ 𝔹𝕠𝕥: ${botname}
 ✦ 𝔽𝕖𝕔𝕙𝕒: ${fecha}
 ✦ ℍ𝕠𝕣𝕒: ${tiempo}
-✧⁺₊⋆☾⋆.˚₊✩🍒🌸
+✧⁺₊⋆☾⋆.˚₊✩🥭🎧
 `;
 global.packsticker2 = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ 𝑆𝐴𝑁𝑇𝐴𝐹𝐿𝑂𝑊 - 𝐵𝑂𝑇 ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╮
      ${dev}
-╰࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ ⌬ ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╯`
+╰࣭࣭࣭࣭࣭࣭ٜ۫┄☪︎⃘✦ C'arlos R'amirez F'c ✦☪︎┄࣭࣭࣭࣭࣭࣭۫╯`
   
 global.fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6285600793871-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${nombre}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${nombre},;;;\nFN:${nombre},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': null, thumbnail: null,sendEphemeral: true}}}
 
