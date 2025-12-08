@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let dia = moment.tz('America/Lima').locale('es').format('dddd')
     let comandos = Object.keys(global.plugins).length
 
-    let club = '⚡ *Powered by* » Sʜᴀᴅᴏᴡ•Core 𝖢𝗅𝗎𝖻 ⚡'
+    let club = '⚡ *Powered by* » Cᴀʀʟᴏs•ʀᴠ 🎧'
     let menu = `╔════ ≪ •❈• ≫ ════╗
       👻 𝑴𝑬𝑵𝑼 𝑹𝑷𝑮 👻
 ╚════ ≪ •❈• ≫ ════╝
@@ -61,7 +61,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
 📢 *Canal Oficial:*  
 🔗 ${channel}  
-「 ⚽𐚁 ֹ ִ Rin Itoshi - Official ୧ ֹ ִ⚽ 」
+「 🎧𐚁 ֹ ִ Santaflow - Official ୧ ֹ ִ🎶 」
     `.trim()
 
     await conn.sendMessage(m.chat, {
@@ -82,9 +82,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
           newsletterName: channelRD.name
         },
         externalAdReply: {
-          title: '👻 Rin Itoshi - Menú RPG',
+          title: '👻 Santaflow - Menú RPG',
           body: '🎮 ᴄʀᴇᴀ ᴛᴜ ᴀᴠᴇɴᴛᴜʀᴀ, ʀᴇᴄᴏɢᴇ ʀᴇᴄᴜʀsᴏs, ɢᴀɴᴀ ᴏʀᴏ ʏ ᴅᴏᴍɪɴᴀ ᴇʟ ᴍᴜɴᴅᴏ ʀᴘɢ ⚔️',
-          thumbnailUrl: 'https://files.catbox.moe/us0m4f.jpg',
+          thumbnailUrl: 'https://files.cloudkuimages.guru/images/355eae35d55e.jpg',
           sourceUrl: redes,
           mediaType: 1,
           renderLargerThumbnail: true
