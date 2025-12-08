@@ -206,7 +206,7 @@ break
 }
 if (m.isGroup) {
 try {
-const res = await fetch(`${global.APIs.delirius.url}/search/tenor?q=${query}`)
+const res = await fetch(`https://api.delirius.store/search/tenor?q=${query}`)
 const json = await res.json()
 const gifs = json.data
 if (!gifs || gifs.length === 0) return m.reply('ꕥ No se encontraron resultados.')
