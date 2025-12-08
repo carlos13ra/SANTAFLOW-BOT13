@@ -160,7 +160,7 @@ let handler = async (m, { conn }) => {
       text,
       contextInfo: {
         externalAdReply: {
-          title: "🎧 MENÚ DE AUDIOS - RIN ITOSHI BOT ⚡",
+          title: "🎧 MENÚ DE AUDIOS - SANTAFLOW BOT 🎧",
           body: "Escribe el nombre del audio para reproducirlo automáticamente.",
           thumbnailUrl: banner,
           sourceUrl: redes,
