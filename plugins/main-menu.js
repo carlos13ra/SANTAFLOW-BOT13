@@ -58,82 +58,94 @@ for (let tag in grupos) {
 
 const secciones = Object.entries(grupos).map(([tag, cmds]) => {
   const emoji = emojis[tag] || '⭐'
-  return `╭─⛄━━━━━━━━━🎄
-│ 🎄 〔 ${emoji} ${tag.toUpperCase()} 〕 ❄️
-│━━━━━━━━━━━━❄️\n`
-   + cmds.map(cmd => `│ 🎁 ${cmd}`).join('\n') 
-   + `\n╰─🎅━━━━━━━━━━☃️`
+  return `╭🎄${emoji} ${tag.toUpperCase()}🎄─⬣\n`
+    + cmds.map(cmd => `┃ ☃️ ${cmd}`).join('\n')
+    + `\n╰──🎁 ✦ 🎁──⬣`
 }).join('\n\n')
 
-
 let menuText = `
-╔════•ೋ•❅❖❅•ೋ•════╗
-   ❄️ Santaflow – BOT ❄️
-╚════•ೋ•❅❖❅•ೋ•════╝
+╔❄️☃️═••═☃️❄️═╗
+ 𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾-𝑩𝑶𝑻
+╚❄️☃️═••═☃️❄️═╝
 
-☃️ *${ucapan()} @${userId.split('@')[0]}*  
+🎁✨ ¡${ucapan()} @${userId.split('@')[0]}! ✨🎁
+🎄 Bienvenido al menú mágico de Navidad 🎅  
 
-┏━🎁 INFO USER 🎁━━
-┃ 👤 Usuario: ${name}
-┃ 🎚️ Nivel: ${level}
-┃ ⭐ Experiencia: ${exp}
-┃ 🔱 Rango: Cachud@
-┗━━━━━━━━━━━━━━━━━━❄️
+𝗜 𝗡 𝗙 𝗢 - 𝗨 𝗦 𝗘 𝗥 💫
+﹊﹊﹊﹊﹊﹊﹊﹊﹊
+ᴜsᴇʀ: ${name}
+ɴɪᴠᴇʟ: ${level}
+ᴇxᴘ ᴛᴏᴛᴀʟ: ${exp}
+ʀᴀɴɢᴏ: ${role}
+──────────────────────
 
-┏━🎅 INFO DEL BOT 🎅━━
-┃ 👑 Owner: wa.me/${suittag}
-┃ 🤖 Estado: ${(conn.user.jid == global.conn.user.jid ? '🎅 BOT OFICIAL' : '🎄 SUB BOT')}
-┃ 📜 Comandos: ${totalCommands}
-┃ 🧑‍🤝‍🧑 Usuarios: ${totalreg}
-┃ ⏳ Uptime: ${uptime}
-┗━━━━━━━━━━━━━━━━━━❄️
+𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ☃️
+﹊﹊﹊﹊﹊﹊﹊﹊﹊
+👑 ᴏᴡɴᴇʀ: wa.me/51${suittag}
+🤖 ʙᴏᴛ: ${(conn.user.jid == global.conn.user.jid ? '☃️ ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '⛄ sᴜʙ ʙᴏᴛ')}
+📚 ᴄᴏᴍᴀɴᴅᴏs: ${totalCommands}
+🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: ${totalreg}
+⏱️ ʀᴜɴᴛɪᴍᴇ: ${uptime}
+──────────────────────
 
-┏━⏳ TIEMPO ⏳━━━
-┃ 🕒 Hora Perú: ${hora}
-┃ 📅 Fecha: ${fecha}
-┃ 🌤️ Día: ${dia}
-┗━━━━━━━━━━━━━━━━━━❄️
+𝗜𝗡𝗙𝗢 - 𝗙𝗘𝗖𝗛𝗔 ❄️
+﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: ${hora}
+🍩 ғᴇᴄʜᴀ: ${fecha}
+☘️ ᴅɪᴀ: ${dia}
+──────────────────────
 
-
-🎄✨ FELICES FIESTAS ✨🎄
-🎄 ¡Que la alegría, la paz y los comandos te acompañen!🎆  
-❄️ ¡fєℓιz иανι∂α∂🎄 & ρяσѕρєяσ αи̃σ иυєνσ! 🌟
-✨ 𝙶𝙾𝙹𝙾 - 𝙱𝙾𝚃 ✨  
-© 2024 - 2025 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 𝐂𝐚𝐫𝐥𝐨𝐬 𝐑𝐚𝐦í𝐫𝐞𝐳
+❄️═════════❄️
+💫🎆 𝐅𝐄𝐋𝐈𝐙 𝐍𝐀𝐕𝐈𝐃𝐀𝐃 𝐘 𝐏𝐑𝐎𝐒𝐏𝐄𝐑𝐎 𝐀Ñ𝐎 𝐍𝐔𝐄𝐕𝐎 2026 🎆💫  
+🎅 Que tu corazón brille de alegría,  
+🎁 tus días se llenen de magia y amor,  
+🎄 y tus sueños renazcan con esperanza ✨  
+🎇 ¡Gracias por compartir esta navidad y 
+💫 prospero año nuevo con nosotros! 💖  
+❄️═════════❄️
 
 ${secciones}
+
+╭ *SANTAFLOW BOT* ╮
+🎁 “Tu ayudante mágico en esta Navidad y Año Nuevo”  
+🎅 © 2025 - 2026 By Carlos Ramírez  
+╰──────────────────────────╯
 `.trim()
 
 await m.react('❄️')
+await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
-await conn.sendMessage(
-  m.chat,
-  {
-    video: { url: video },
-    caption: menuText,
-    gifPlayback: true,
-    gifAttribution: 0,
-    contextInfo: {
-      mentionedJid: [m.sender],
-      isForwarded: true,
-      forwardingScore: 999,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: channelRD.id,
-        serverMessageId: 100,
-        newsletterName: channelRD.name
-      },
-      externalAdReply: {
-        title: botname,
-        body: dev,
-        thumbnailUrl: banner,
-        mediaType: 1,
-        renderLargerThumbnail: true
-      }
-    }
-  },
-  { quoted: m }
-)
+  } catch (e) {
+    console.error(e)
+    await conn.sendMessage(m.chat, {
+      text: `✘ Error al enviar el menú: ${e.message}`,
+      mentions: [m.sender]
+    }, { quoted: m })
+  }
+}
 
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = ['menu', 'menú', 'help', 'allmenú', 'allmenu', 'menucompleto']
+handler.register = true
+export default handler
+
+function clockString(ms) {
+  let seconds = Math.floor((ms / 1000) % 60)
+  let minutes = Math.floor((ms / (1000 * 60)) % 60)
+  let hours = Math.floor((ms / (1000 * 60 * 60)) % 24)
+  return `${hours}h ${minutes}m ${seconds}s`
+}
+
+function ucapan() {
+  const time = moment.tz('America/Lima').format('HH')
+  let res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
+  if (time >= 5 && time < 12) res = "ʙᴜᴇɴᴏs ᴅɪᴀs ☀️"
+  else if (time >= 12 && time < 18) res = "ʙᴜᴇɴᴀs ᴛᴀʀᴅᴇs 🌤️"
+  else if (time >= 18) res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
+  return res
+}
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, {
