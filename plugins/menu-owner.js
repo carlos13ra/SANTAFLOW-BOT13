@@ -8,8 +8,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     let nombreUser = m.pushName || 'Usuario'
     let pais = '🇵🇪 Perú'
-    let botName = global.bot || 'Rin Itoshi'
-    let club = '🌲 Owner Panel • Shadow•Core 🌲'
+    let botName = global.bot || 'sᴀɴᴛᴀғʟᴏᴡ'
+    let club = '🌲 Owner Panel • ᴄᴀʀʟᴏs•ʀᴠ🌲'
 
     let menu = `
 [ꔊꔊꔊ[🍉] _*MENU - OWNER*_ [🍓]ꔊꔊꔊ]    
