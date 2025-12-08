@@ -82,7 +82,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 
 ⚠️ *Solo mayores de edad. Usa bajo tu responsabilidad.*
 
-> © nsғᴡ 𝙈𝙀𝙉𝙐 by Rin itoshi
+> © nsғᴡ 𝙈𝙀𝙉𝙐 by sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ
 `.trim();
 
     await conn.sendMessage(m.chat, {
