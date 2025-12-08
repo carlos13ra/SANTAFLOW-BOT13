@@ -58,11 +58,11 @@ for (let tag in grupos) {
 
 const secciones = Object.entries(grupos).map(([tag, cmds]) => {
   const emoji = emojis[tag] || '⭐'
-  return `╭─⛄━━━━━━━━━━━━🎄
+  return `╭─⛄━━━━━━━━━🎄
 │ 🎄 〔 ${emoji} ${tag.toUpperCase()} 〕 ❄️
-│━━━━━━━━━━━━━━━━❄️\n`
+│━━━━━━━━━━━━❄️\n`
    + cmds.map(cmd => `│ 🎁 ${cmd}`).join('\n') 
-   + `\n╰─🎅━━━━━━━━━━━━☃️`
+   + `\n╰─🎅━━━━━━━━━━☃️`
 }).join('\n\n')
 
 
@@ -73,14 +73,14 @@ let menuText = `
 
 ☃️ *${ucapan()} @${userId.split('@')[0]}*  
 
-┏━━━🎁 INFO USER 🎁━━━
+┏━🎁 INFO USER 🎁━━
 ┃ 👤 Usuario: ${name}
 ┃ 🎚️ Nivel: ${level}
 ┃ ⭐ Experiencia: ${exp}
 ┃ 🔱 Rango: Cachud@
 ┗━━━━━━━━━━━━━━━━━━❄️
 
-┏━━━🎅 INFO DEL BOT 🎅━━━
+┏━🎅 INFO DEL BOT 🎅━━
 ┃ 👑 Owner: wa.me/${suittag}
 ┃ 🤖 Estado: ${(conn.user.jid == global.conn.user.jid ? '🎅 BOT OFICIAL' : '🎄 SUB BOT')}
 ┃ 📜 Comandos: ${totalCommands}
@@ -88,7 +88,7 @@ let menuText = `
 ┃ ⏳ Uptime: ${uptime}
 ┗━━━━━━━━━━━━━━━━━━❄️
 
-┏━━━⏳ TIEMPO ⏳━━━
+┏━⏳ TIEMPO ⏳━━━
 ┃ 🕒 Hora Perú: ${hora}
 ┃ 📅 Fecha: ${fecha}
 ┃ 🌤️ Día: ${dia}
