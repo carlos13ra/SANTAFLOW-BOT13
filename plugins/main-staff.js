@@ -1,8 +1,8 @@
 let handler = async (m, { conn, command, usedPrefix }) => {
   let img = './src/catalogo.jpg'
-  let staff = ` 🌷⃢🌟⃞𝑬𝒒𝒖𝒊𝒑𝒐 𝒅𝒆 𝑨𝒚𝒖𝒅𝒂𝒏𝒕𝒆𝒔🌟⃞🌷⃢
+  let staff = ` 🎧🌟⃞𝑬𝒒𝒖𝒊𝒑𝒐 𝒅𝒆 𝑨𝒚𝒖𝒅𝒂𝒏𝒕𝒆𝒔🌟⃞🎵
 
-╭━➤🏜️ 𝑹𝒊𝒏 𝑰𝒕𝒐𝒔𝒉𝒊 𝑩𝒐𝒕 𝑴𝑫 ︵ٜ⊹۬︵
+╭━➤🏜️ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 - 𝐁𝐎𝐓 ︵ٜ⊹۬︵
 ┃👑 𝑫𝒖𝒆𝒏̃𝒐: ${global.creador || 'No definido'}
 ┃🤖 𝑩𝒐𝒕: ${global.botname || 'Santaflow'}
 ┃📦 𝑽𝒆𝒓𝒔𝒊ó𝒏: ${global.vs || '1.0.0'}
