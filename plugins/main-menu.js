@@ -26,9 +26,9 @@ let handler = async (m, { conn, usedPrefix }) => {
       'https://files.catbox.moe/t9frnr.mp4',
       'https://files.catbox.moe/j4aew2.mp4',
       'https://files.catbox.moe/1b5zis.mp4',
-      'https://files.catbox.moe/leq8g0.mp4',
-      'https://files.catbox.moe/hvfmay.mp4',
-      'https://files.catbox.moe/x2tt5r.mp4'
+      'https://files.catbox.moe/j1bwtc.mp4',
+      'https://files.catbox.moe/jic49n.mp4',
+      'https://files.catbox.moe/p71bhi.mp4'
     ]
     const video = videos[Math.floor(Math.random() * videos.length)]
 
