@@ -54,9 +54,9 @@ let handler = async (m, { conn, usedPrefix }) => {
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
       const emoji = emojis[tag] || '⭐'
       return `
-╭━━━〔 ${emoji} ${tag.toUpperCase()} 〕━━━⬣
-${cmds.map(cmd => `┃ ✦ \`\`\`${cmd}`).join('\n')}\`\`\`
-╰━━━━━━━━━━━━━━━━━━⬣`
+> ${emoji} ${tag.toUpperCase()}
+${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
+`
     }).join('\n')
 
     const menuText = `
