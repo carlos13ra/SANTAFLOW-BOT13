@@ -5,11 +5,11 @@ import PhoneNumber from 'awesome-phonenumber';
 
 const handler = async (m, { conn }) => {
   const name = 'Carlos | Oficial';
-  const numCreador = '51984169553';
+  const numCreador = '51978385249';
   const empresa = 'santaflow Bot Inc.';
   const about = '🥭Desarrollador de Santaflow Bot';
   const correo = 'carlosramirezvillanueva30@gmail.com';
-  const web = 'https://shadow-xyz.vercel.app/';
+  const web = 'https://www.atom.bio/musicflowstudio_22';
   const direccion = 'Tokyo, Japón 🇯🇵';
   const fotoPerfil = 'https://i.postimg.cc/HLhV1K75/1760212892451.jpg';
 
