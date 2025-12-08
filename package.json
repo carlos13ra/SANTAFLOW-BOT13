@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/Yuji-XDev/Rin-Itoshi-Bot",
+"homepage": "https://github.com/Carlos13ra/SANTAFLOW-BOT13",
 "author": {
-"name": "ShadowCore"
+"name": "Carlos"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/Yuji-XDev/Rin-Itoshi-Bot.git"
+"url": "git+https://github.com/Carlos13ra/SANTAFLOW-BOT13.git"
 },
 "bugs": {
-"url": "https://github.com/Yuji-XDev/Rin-Itoshi-Bot/issues"
+"url": "https://github.com/Carlos13ra/SANTAFLOW-BOT13/issues"
 },
 "license": "MIT-License",
 "dependencies": {
