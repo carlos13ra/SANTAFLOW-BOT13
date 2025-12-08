@@ -22,39 +22,41 @@ let handler = async (m, { conn, usedPrefix }) => {
     let dia = fechaObj.toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
     
     let videos = [
-        'https://files.cloudkuimages.guru/videos/4ccca70e8bdb.mp4',
-        'https://files.cloudkuimages.guru/videos/326dfe5c1e8c.mp4',
-        'https://files.cloudkuimages.guru/videos/5f2faf729727.mp4',
-        'https://files.cloudkuimages.guru/videos/ed679e08493c.mp4',
-        'https://files.cloudkuimages.guru/videos/bb8b8cbf9d4e.mp4'
+        'https://files.catbox.moe/jgfdmn.mp4',
+        'https://files.catbox.moe/wc8wcz.mp4',
+        'https://files.catbox.moe/t9frnr.mp4',
+        'https://files.catbox.moe/j4aew2.mp4',
+        'https://files.catbox.moe/1b5zis.mp4',
+        'https://files.catbox.moe/leq8g0.mp4',
+        'https://files.catbox.moe/hvfmay.mp4',
+        'https://files.catbox.moe/x2tt5r.mp4'
     ]
     let video = videos[Math.floor(Math.random() * videos.length)]
 
     const emojis = {
-      'main': '🦋', 'tools': '🛠️', 'audio': '🎧', 'group': '👥',
-      'owner': '👑', 'fun': '🎮', 'info': 'ℹ️', 'internet': '🌐',
-      'downloads': '⬇️', 'admin': '🧰', 'anime': '✨', 'nsfw': '🔞',
-      'search': '🔍', 'sticker': '🖼️', 'game': '🕹️', 'premium': '💎', 'bot': '🤖'
-    }
+  'main': '🎄', 'tools': '🧰', 'audio': '🎧', 'group': '👥',
+  'owner': '👑', 'fun': '🎮', 'info': '💫', 'internet': '🌐',
+  'downloads': '⬇️', 'admin': '⚙️', 'anime': '✨', 'nsfw': '🚫',
+  'search': '🔎', 'sticker': '🖼️', 'game': '🕹️', 'premium': '💎', 'bot': '🤖'
+}
 
-    let grupos = {}
-    for (let plugin of Object.values(global.plugins || {})) {
-      if (!plugin.help || !plugin.tags) continue
-      for (let tag of plugin.tags) {
-        if (!grupos[tag]) grupos[tag] = []
-        for (let help of plugin.help) {
-          if (/^\$|^=>|^>/.test(help)) continue
-          grupos[tag].push(`${usedPrefix}${help}`)
-        }
-      }
+let grupos = {}
+for (let plugin of Object.values(global.plugins || {})) {
+  if (!plugin.help || !plugin.tags) continue
+  for (let tag of plugin.tags) {
+    if (!grupos[tag]) grupos[tag] = []
+    for (let help of plugin.help) {
+      if (/^\$|^=>|^>/.test(help)) continue
+      grupos[tag].push(`${usedPrefix}${help}`)
     }
+  }
+}
 
-    for (let tag in grupos) {
-      grupos[tag].sort((a, b) => a.localeCompare(b))
-    }
+for (let tag in grupos) {
+  grupos[tag].sort((a, b) => a.localeCompare(b))
+}
 
-    const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-  coconst secciones = Object.entries(grupos).map(([tag, cmds]) => {
+const secciones = Object.entries(grupos).map(([tag, cmds]) => {
   const emoji = emojis[tag] || '⭐'
   return `╭🎄${emoji} ${tag.toUpperCase()}🎄─⬣\n`
     + cmds.map(cmd => `┃ ☃️ ${cmd}`).join('\n')
@@ -143,4 +145,4 @@ function ucapan() {
   else if (time >= 12 && time < 18) res = "ʙᴜᴇɴᴀs ᴛᴀʀᴅᴇs 🌤️"
   else if (time >= 18) res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
   return res
-   }
+  }
