@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let readMore = String.fromCharCode(8206).repeat(4001)
     
     let channel = 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U'
-    let club = '⚡ *Powered by* » Sʜᴀᴅᴏᴡ•Core 𝖢𝗅𝗎𝖻 ⚡'
+    let club = '🎶 *Powered by* » ᴄᴀʀʟᴏs.ʀᴠ 🎧'
     let menu = `
 ╭━━━〔 *📥 𝘔𝘌𝘕𝘜 𝘋𝘌𝘚𝘊𝘈𝘙𝘎𝘈𝘚* 〕━━⬣
 ┃ ⏱️ 𝐇𝐨𝐫𝐚: *${hora}*
@@ -87,7 +87,7 @@ ${readMore}
 
 ${channel}
 
-「 ⚽𐚁 ֹ ִ Rin Itoshi - Official ୧ ֹ ִ⚽ᩚ꤬ᰍ 」
+「 🎧𐚁 ֹ ִ Santaflow - Official ୧ ֹ ִ🎧ᰍ 」
     `.trim()
 
     await conn.sendMessage(m.chat, {
@@ -108,9 +108,9 @@ ${channel}
           newsletterName: channelRD.name
         },
         externalAdReply: {
-          title: '⚡ Rin Itoshi - 🌱 Menu Descargas',
+          title: '🎶Santaflow - 🌱 Menu Descargas',
           body: '🎧 ᴅᴇsᴄᴀʀɢᴀ ᴄᴏɴᴛᴇɴɪᴅᴏ ᴅᴇ ʟᴀs ᴘʀɪɴᴄɪᴘᴀʟᴇs ʀᴇᴅᴇs: ʏᴏᴜᴛᴜʙᴇ, ғᴀᴄᴇʙᴏᴏᴋ, sᴘᴏᴛɪғʏ, ɪɢ, ᴇᴛᴄ.',
-          thumbnailUrl: 'https://files.catbox.moe/us0m4f.jpg',
+          thumbnailUrl: 'https://files.cloudkuimages.guru/images/16d6e45c0565.jpg',
           sourceUrl: redes,
           mediaType: 1,
           renderLargerThumbnail: true
