@@ -34,8 +34,8 @@ let handler = async (m, { conn }) => {
 ┃ ✦ 🌚 #ᴀᴛᴛᴘ <texto>
 ┃    ▸ Crea sticker a partir de texto.
 ┃
-╰━━━〔 ⚡ ${global.packname || 'Rin itoshi Bot'} ⚡〕━━⬣
-> 𓆩 ${global.dev || 'Shadow-xyzi'} 𓆪
+╰━━━〔 🎵 ${global.packname || 'Santaflow Bot'} 🎶〕━━⬣
+> 𓆩 ${global.dev || 'ᴄᴀʀʟᴏs-ʀᴠ'} 𓆪
 `.trim();
 
   await conn.sendMessage(m.chat, {
@@ -50,8 +50,8 @@ let handler = async (m, { conn }) => {
         mediaType: 1,
         renderLargerThumbnail: true,
         showAdAttribution: true,
-        mediaUrl: 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U',
-        sourceUrl: 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U'
+        mediaUrl: 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'
       }
     }
   }, { quoted: m });
