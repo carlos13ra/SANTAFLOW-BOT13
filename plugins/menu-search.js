@@ -62,13 +62,13 @@ ${readMore}
 
 ${channel}
 
-「 ⚽𐚁 ֹ ִ Rin Itoshi - Official ୧ ֹ ִ⚽ 」
+「 🎧𐚁 ֹ ִ Santaflow - Official ୧ ֹ ִ🎧 」
     `.trim()
 
     await conn.sendMessage(m.chat, {
       image: { url: logo },
       caption: menu,
-      footer: '⚡ *Powered by* » Sʜᴀᴅᴏᴡ•Core 𝖢𝗅𝗎𝖻 🌱',
+      footer: '🎶 *Powered by* » cᴀʀʟᴏs•ʀᴠ🌱',
       buttons: [
         { buttonId: `${usedPrefix}owner`, buttonText: { displayText: "👑 Creador" }, type: 1 },
         { buttonId: `${usedPrefix}menu`, buttonText: { displayText: "📜 Menú Completo" }, type: 1 }
@@ -83,7 +83,7 @@ ${channel}
           newsletterName: channelRD.name
         },
         externalAdReply: {
-          title: '💨 Rin Itoshi - Menú Search 💎',
+          title: '💨 Santaflow - Menú Search 💎',
           body: '⟡ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐞𝐬𝐩𝐞𝐜𝐢𝐚𝐥𝐞𝐬 𝐩𝐚𝐫𝐚 𝐛𝐮𝐬𝐜𝐚𝐫 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐜𝐢𝐨́𝐧, 𝐚𝐮𝐝𝐢𝐨𝐬, 𝐯𝐢𝐝𝐞𝐨𝐬 𝐲 𝐦𝐮𝐜𝐡𝐨 𝐦𝐚́𝐬 𝐞𝐧 𝐥𝐢́𝐧𝐞𝐚 🌍.',
           thumbnailUrl: 'https://files.catbox.moe/us0m4f.jpg',
           sourceUrl: redes,
