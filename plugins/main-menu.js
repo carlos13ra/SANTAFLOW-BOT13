@@ -22,9 +22,9 @@ let handler = async (m, { conn, usedPrefix }) => {
     let dia = fechaObj.toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
     
     let videos = [
-        'https://files.catbox.moe/jgfdmn.mp4',
-        'https://files.catbox.moe/wc8wcz.mp4',
-        'https://files.catbox.moe/t9frnr.mp4',
+        'https://files.catbox.moe/uwgnlu.mp4',
+        'https://files.catbox.moe/z8f6lt.mp4',
+        'https://files.catbox.moe/2q76lf.mp4',
         'https://files.catbox.moe/j4aew2.mp4',
         'https://files.catbox.moe/1b5zis.mp4',
         'https://files.catbox.moe/leq8g0.mp4',
