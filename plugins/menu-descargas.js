@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let comandos = Object.keys(global.plugins).length
     let readMore = String.fromCharCode(8206).repeat(4001)
     
-    let channel = 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U'
+    let channel = 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'
     let club = '🎶 *Powered by* » ᴄᴀʀʟᴏs.ʀᴠ 🎧'
     let menu = `
 ╭━━━〔 *📥 𝘔𝘌𝘕𝘜 𝘋𝘌𝘚𝘊𝘈𝘙𝘎𝘈𝘚* 〕━━⬣
