@@ -1,8 +1,3 @@
-/*// ☘️ Código hecho por DEV.𝘚𝘏𝘈𝘋𝘖𝘞 XD
-// - https://github.com/Yuji-XDev
-// - Dejen créditos aunque sea gracias.
-// - 𝘙𝘐𝘕 𝘐𝘛𝘖𝘚𝘏𝘐 BOT MD ⚽
-
 import sharp from 'sharp';
 import fetch from 'node-fetch';
 
@@ -21,13 +16,13 @@ const handler = async (m, { conn, usedPrefix }) => {
     const user = global.db.data.users[m.sender] || {};
     const taguser = '@' + (m.sender.pushname ? m.sender.pushname : m.sender.split('@s.whatsapp.net')[0])
 
-    const menutxt = `⿻̟֟፝݊͜⃝⁩⚽꫶⃝꙰⿻͜𝐑𝐈𝐍͜ 𝐈͜𝐓𝐎𝐒༙͜ᝲ𝐇𝐈🍧⃟─̶̲̲̲̲̲̲̲̲̲֟፝͠
-  🍨⃟≛⃝🫐๋⭑sʜᴀᴅᴏᴡ.xʏᴢ ⊹༙ᝲ🧪𝆺𝅥𝆹𝅥𝆬! 	✰ :
+    const menutxt = `⿻̟֟፝݊͜⃝⁩🎶sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ ─̶̲̲̲̲̲̲̲̲̲֟፝͠
+  🍨⃟≛⃝🫐๋⭑ᴄᴀʀʟᴏs.ʀᴠ ⊹༙ᝲ🧪𝆺𝅥𝆹𝅥𝆬! 	✰ :
 
 ┌───────────
 │□╭┄◦ৎ ˖ ࣪⊹ 𝐈𝐍𝐅𝐎 ~ 𝐁𝐎𝐓 ✧⃟ᰳᰬᰶ
 │□┊≡
-│□┊≡ 🍂 𝙲𝚁𝙴𝙰𝙳𝙾𝚁: *shadow.xyz*
+│□┊≡ 🍂 𝙲𝚁𝙴𝙰𝙳𝙾𝚁: *ᴄᴀʀʟᴏs ʀᴠ*
 │□┊≡ 🧸 𝙲𝙾𝙽𝚃𝙰𝙲𝚃𝙾: *wa.link/z1w9sq*
 │□┊≡ 💾 𝚅𝚂: *2.2.5*
 │□┊≡ 👥 𝚄𝚂𝙴𝚁𝚂: *${totalUsers}*
@@ -151,7 +146,7 @@ const handler = async (m, { conn, usedPrefix }) => {
         rows: [
           { title: "⪛ 𝐈𝐍𝐅𝐎 ~ 𝐒𝐘𝐒𝐓𝐄𝐌 ⪜", description: "💦 ᴠᴇʀ ᴇʟ sɪsᴛᴇᴍᴀ ᴅᴇʟ ʙᴏᴛ xᴅ", id: `${usedPrefix}sistema` },
           { title: "⪛ 𝐈𝐍𝐅𝐎 ~ 𝐒𝐓𝐀𝐓𝐔𝐒 ⪜", description: "🍩 ᴠᴇʀ ᴇsᴛᴀᴅᴏ ᴅᴇʟ ʙᴏᴛ", id: `${usedPrefix}estado` },
-          { title: "⪛ 𝐈𝐍𝐅𝐎 ~ 𝐗𝐃 ⪜", description: "⚽ ᴠᴇʀ ɪɴғᴏʀᴍᴀᴄɪᴏɴ ᴅᴇʟ ʙᴏᴛ", id: `${usedPrefix}info` }
+          { title: "⪛ 𝐈𝐍𝐅𝐎 ~ 𝐗𝐃 ⪜", description: "🎧 ᴠᴇʀ ɪɴғᴏʀᴍᴀᴄɪᴏɴ ᴅᴇʟ ʙᴏᴛ", id: `${usedPrefix}info` }
         ]
       },
       {
@@ -169,7 +164,7 @@ const handler = async (m, { conn, usedPrefix }) => {
       mimetype: 'image/PNG',
       caption: menutxt,
       jpegThumbnail: thumb2,
-      footer: '© ʀɪɴ ɪᴛᴏsʜɪ ᴜʟᴛʀᴀ ʙᴏᴛ | ° ʙʏ sʜᴀᴅᴏᴡ.xʏᴢ',
+      footer: '© sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ | ° ʙʏ ᴄᴀʀʟᴏs.ʀᴠ',
       buttons: [
         ...buttons,
         {
@@ -177,7 +172,7 @@ const handler = async (m, { conn, usedPrefix }) => {
           nativeFlowInfo: {
             name: 'single_select',
             paramsJson: JSON.stringify({
-              title: '⪛⪜🍭⃝⃗𐇵҉𝐀𝐋𝐌𝐎𝐃 𝐌𝐄𝐍𝐔 𝐋𝐈𝐒𝐓𐇵҉⚽',
+              title: '⪛⪜🍭⃝⃗𐇵҉𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𐇵҉🎧',
               sections
             })
           }
@@ -191,7 +186,7 @@ const handler = async (m, { conn, usedPrefix }) => {
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363401008003732@newsletter',
           serverMessageId: 100,
-          newsletterName: '⚽𐚁 ֹ ִ Rin Itoshi - Official ୧ ֹ ִ⚽ᩚ꤬ᰍ'
+          newsletterName: '🎶𐚁 ֹ ִ 𝑺𝒂𝒏𝒕𝒂𝒇𝒍𝒐𝒘 - Official ୧ ֹ ִ🎵ᰍ'
         },
         isForwarded: true,
         forwardingScore: 999,
