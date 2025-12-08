@@ -85,7 +85,7 @@ ${channel}
         externalAdReply: {
           title: '💨 Santaflow - Menú Search 💎',
           body: '⟡ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐞𝐬𝐩𝐞𝐜𝐢𝐚𝐥𝐞𝐬 𝐩𝐚𝐫𝐚 𝐛𝐮𝐬𝐜𝐚𝐫 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐜𝐢𝐨́𝐧, 𝐚𝐮𝐝𝐢𝐨𝐬, 𝐯𝐢𝐝𝐞𝐨𝐬 𝐲 𝐦𝐮𝐜𝐡𝐨 𝐦𝐚́𝐬 𝐞𝐧 𝐥𝐢́𝐧𝐞𝐚 🌍.',
-          thumbnailUrl: 'https://files.catbox.moe/us0m4f.jpg',
+          thumbnailUrl: 'https://files.cloudkuimages.guru/images/e5ce6e6ddc7c.jpg',
           sourceUrl: redes,
           mediaType: 1,
           renderLargerThumbnail: true
