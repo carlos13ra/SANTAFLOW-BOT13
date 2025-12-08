@@ -59,7 +59,7 @@ for (let tag in grupos) {
 const secciones = Object.entries(grupos).map(([tag, cmds]) => {
   const emoji = emojis[tag] || '⭐'
   return `╭${emoji} ${tag.toUpperCase()}⬣\n`
-    + cmds.map(cmd => `┃☃️ ${cmd}`).join('\n')
+    + cmds.map(cmd => `❄️ ${cmd}`).join('\n')
     + `\n╰─❄️ ✦ ❄️─⬣`
 }).join('\n\n')
 
@@ -77,7 +77,7 @@ let menuText = `
 ɴɪᴠᴇʟ: ${level}
 ᴇxᴘ ᴛᴏᴛᴀʟ: ${exp}
 ʀᴀɴɢᴏ: ${role}
-───────────────────
+────────────────
 
 𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ☃️
 ﹊﹊﹊﹊﹊﹊﹊﹊﹊
@@ -86,14 +86,14 @@ let menuText = `
 📚 ᴄᴏᴍᴀɴᴅᴏs: ${totalCommands}
 🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: ${totalreg}
 ⏱️ ʀᴜɴᴛɪᴍᴇ: ${uptime}
-───────────────────
+────────────────
 
 𝗜𝗡𝗙𝗢 - 𝗙𝗘𝗖𝗛𝗔 ❄️
 ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
 ⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: ${hora}
 🍩 ғᴇᴄʜᴀ: ${fecha}
 ☘️ ᴅɪᴀ: ${dia}
-───────────────────
+───────────────
 
 ❄️═════════❄️
 💫🎆 𝐅𝐄𝐋𝐈𝐙 𝐍𝐀𝐕𝐈𝐃𝐀𝐃 𝐘 𝐏𝐑𝐎𝐒𝐏𝐄𝐑𝐎 𝐀Ñ𝐎 𝐍𝐔𝐄𝐕𝐎 2026 🎆💫  
