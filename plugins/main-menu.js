@@ -57,9 +57,9 @@ let handler = async (m, { conn, usedPrefix }) => {
   const emoji = emojis[tag] || '❄️'
   return `
 ╔❄️ *${emoji} ${tag.toUpperCase()} ${emoji}* ❄️╗
-║ ✦💠─────────────💠✦
+║ ✦💠──────────💠✦
 ${cmds.map(cmd => `║ ❄️  ${cmd}`).join('\n')}
-║ ✦💠─────────────💠✦
+║ ✦💠──────────💠✦
 ╚🎧 𝐒𝐚𝐧𝐭𝐚𝐟𝐥𝐨𝐰 - 𝐏𝐞𝐜𝐚𝐝𝐨𝐬 𝐂𝐚𝐩𝐢𝐭𝐚𝐥𝐞𝐬 🎧╝
 `.trim()
 }).join('\n\n')
