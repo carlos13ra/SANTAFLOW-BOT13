@@ -34,11 +34,11 @@ let handler = async (m, { conn, usedPrefix }) => {
     let video = videos[Math.floor(Math.random() * videos.length)]
 
     const emojis = {
-  'main': '🎄', 'tools': '🧰', 'audio': '🎧', 'group': '👥',
-  'owner': '👑', 'fun': '🎮', 'info': '💫', 'internet': '🌐',
-  'downloads': '⬇️', 'admin': '⚙️', 'anime': '✨', 'nsfw': '🚫',
-  'search': '🔎', 'sticker': '🖼️', 'game': '🕹️', 'premium': '💎', 'bot': '🤖'
-}
+      'main': '🦋', 'tools': '🛠️', 'audio': '🎧', 'group': '👥',
+      'owner': '👑', 'fun': '🎮', 'info': 'ℹ️', 'internet': '🌐',
+      'downloads': '⬇️', 'admin': '🧰', 'anime': '✨', 'nsfw': '🔞',
+      'search': '🔍', 'sticker': '🖼️', 'game': '🕹️', 'premium': '💎', 'bot': '🤖'
+    }
 
 let grupos = {}
 for (let plugin of Object.values(global.plugins || {})) {
