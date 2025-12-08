@@ -52,7 +52,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     for (let tag in grupos) grupos[tag].sort((a, b) => a.localeCompare(b))
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-      const emoji = emojis[tag] || '⭐'
+      const emoji = emojis[tag] || '🌱'
       return `
 > ${emoji} ${tag.toUpperCase()}
 ${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
@@ -64,21 +64,21 @@ ${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
 ┃ ✨ ${ucapan()} @${userId.split('@')[0]} ✨
 ╚══════════════════════╝
 
-╭───〔 🎅 𝗣𝗘𝗥𝗙𝗜𝗟 〕───❄️
-│ 👤 Usuario: ${name}
-│ 🎚 Nivel: ${level}
-│ 🌟 Exp: ${exp}
-│ 🎖 Rango: ${role}
-╰──────────────────❄️
+╭───〔 🎅 𝗣𝗘𝗥𝗙𝗜𝗟 〕───
+│ 👤 *Usuario:* ${name}
+│ 🎚 *Nivel:* ${level}
+│ 🌟 *Exp:* ${exp}
+│ 🎖 *Rango:* ${role}
+╰──────────────────
 
-╭───〔 🤖 𝗘𝗦𝗧𝗔𝗗𝗢 𝗗𝗘𝗟 𝗕𝗢𝗧 〕───❄️
-│ 👑 Owner: wa.me/51${suittag}
-│ 💻 Modo: ${(conn.user.jid === global.conn.user.jid) ? 'Bot oficial' : 'Sub bot'}
-│ 📚 Comandos: ${totalCommands}
-│ 👥 Usuarios: ${totalreg}
-│ ⏱ Uptime: ${uptime}
-│ 🌴 Date: ${hora}, ${fecha}, ${dia}
-╰──────────────────❄️
+╭───〔 🤖 𝗘𝗦𝗧𝗔𝗗𝗢 𝗗𝗘𝗟 𝗕𝗢𝗧 〕───
+│ 👑 *Owner:* wa.me/51${suittag}
+│ 💻 *Modo:* ${(conn.user.jid === global.conn.user.jid) ? 'Bot oficial' : 'Sub bot'}
+│ 📚 *Comandos:* ${totalCommands}
+│ 👥 *Usuarios:* ${totalreg}
+│ ⏱ *Uptime:* ${uptime}
+│ 🌴 *Date:* ${hora}, ${fecha}, ${dia}
+╰──────────────────
 
 ${secciones}
 `.trim()
@@ -107,7 +107,7 @@ ${secciones}
           renderLargerThumbnail: false
         }
       }
-    }, { quoted: null })
+    }, { quoted: m })
 
   } catch (e) {
     console.error(e)
