@@ -79,13 +79,13 @@ let handler = async (m, { conn, usedPrefix }) => {
 ┃ 🌱 ${usedPrefix}antivirtuales
 ╰━━━━━━━━━━━━⬣
 
-🍂⭐ 𝐑𝐢𝐧 𝐈𝐭𝐨𝐬𝐡𝐢 𝐁𝐨𝐭 ⭐🍂
+🍂⭐ 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 𝐁𝐎𝐓 ⭐🍂
 `.trim()
 
     let imgs = [
-      'https://files.catbox.moe/ceotf9.jpg',
-      'https://files.catbox.moe/fft2hr.jpg',
-      'https://files.catbox.moe/i97oje.jpg'
+      'https://files.cloudkuimages.guru/images/16d6e45c0565.jpg',
+      'https://files.cloudkuimages.guru/images/e5ce6e6ddc7c.jpg',
+      'https://files.cloudkuimages.guru/images/431fc1f481b5.jpg'
     ]
     let img = imgs[Math.floor(Math.random() * imgs.length)]
     let thumb = await (await fetch(img)).buffer()
@@ -100,7 +100,7 @@ let handler = async (m, { conn, usedPrefix }) => {
           itemCount: -999999, 
           status: 1, 
           surface: 1, 
-          message: "🍧 Rin Itoshi Bot 💖", 
+          message: "🎧 Santaflow Bot ❄️", 
           orderTitle: 'Bang', 
           thumbnail: thumb,
           sellerJid: '0@s.whatsapp.net'
@@ -113,17 +113,17 @@ let handler = async (m, { conn, usedPrefix }) => {
       contextInfo: {
         mentionedJid: [m.sender],
         externalAdReply: {
-          title: "🌷 Panel de Administración 🌷",
+          title: "🎶 Panel de Administración ❄️",
           body: "🍂 Gestiona tu grupo fácilmente 🍂",
           thumbnailUrl: img,
-          sourceUrl: "https://github.com/Yuji-XDev/Rin-Itoshi-Bot",
+          sourceUrl: "https://github.com/carlos13ra/SANTAFLOW-BOT13.git",
           mediaType: 1,
           renderLargerThumbnail: true
         }
       }
     }, { quoted: fkontak })
 
-    await m.react('⚽')
+    await m.react('🎧')
   } catch (e) {
     await conn.reply(m.chat, '❌ Error mostrando el menú admin.', m)
     console.error(e)
