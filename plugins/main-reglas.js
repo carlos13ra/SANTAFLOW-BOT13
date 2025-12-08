@@ -4,8 +4,8 @@ import moment from 'moment-timezone'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
 
-  let logo = 'https://files.catbox.moe/fft2hr.jpg'
-  let img = 'https://files.catbox.moe/fft2hr.jpg'
+  let logo = 'https://files.cloudkuimages.guru/images/16d6e45c0565.jpg'
+  let img = 'https://files.cloudkuimages.guru/images/e5ce6e6ddc7c.jpg'
 
   // ✦✦✦✦ REGLAS DEL BOT ✦✦✦✦
   if (['botreglas', 'reglasdelbot', 'reglasbot', 'reglas'].includes(command)) {
@@ -17,8 +17,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let groups = Object.values(conn.chats || {}).filter(c => c.id.endsWith('@g.us')).length
 
     const texto = `=================================
-     𝙍𝙀𝙂𝙇𝘼𝙈𝙀𝙉 𝑹𝒊𝒏 𝑰𝒕𝒐𝒔𝒉𝒊 ⚡
- ⚠️ *𝐂𝐨𝐝𝐢𝐠𝐨 𝐝𝐞 𝐎𝐧𝐨𝐫 – Black*
+     𝙍𝙀𝙂𝙇𝘼𝙈𝙀𝙉 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖🎵
 
 ▤ ✘ No llamar al bot innecesariamente.
 ▤ ✘ No hacer spam o comandos repetitivos.
@@ -34,8 +33,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
 =================================
    ❖ 💠 *𝐈𝐍𝐅𝐎 𝐃𝐄𝐋 𝐁𝐎𝐓* 💠 ❖
-🧑‍💻 *Creador:* Shadow.xyz
-🤖 *Nombre:* Rin Itoshi
+🧑‍💻 *Creador:* CARLOS.RV
+🤖 *Nombre:* SANTAFLOW
 📦 *Versión:* 2.2.5
 📊 *Usuarios registrados:* ${userCount}
 💬 *Chats activos:* ${chats} (${groups} grupos)
@@ -79,7 +78,7 @@ ${admins}
 📝 *Descripción:*
 ${groupInfo.desc?.trim() || 'No hay reglas establecidas en la descripción del grupo.'}
 
-> © ʀɪɴ ɪᴛᴏsʜɪ ʙᴏᴛ | ☆ ʙʏ sʜᴀᴅᴏᴡ.xʏᴢ`.trim();
+> © sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ | ☆ ʙʏ ᴄᴀʀʟᴏs.ʀᴠ`.trim();
 
       await conn.sendMessage(m.chat, { image: { url: url || img }, caption: texto, mentions: conn.parseMention(texto) }, { quoted: m })
 
