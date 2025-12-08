@@ -38,7 +38,7 @@ let handler = async (m, { conn }) => {
 
 ${listaComandos}
 
-💌 Canal oficial: https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U
+💌 Canal oficial: https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g
 `.trim();
 
     await conn.sendMessage(m.chat, {
@@ -53,8 +53,8 @@ ${listaComandos}
           mediaType: 1,
           renderLargerThumbnail: true,
           showAdAttribution: true,
-          mediaUrl: 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U',
-          sourceUrl: 'https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U'
+          mediaUrl: 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g',
+          sourceUrl: 'https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g'
         }
       }
     }, { quoted: m });
