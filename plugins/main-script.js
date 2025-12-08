@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args }) => {
 try {
-let res = await fetch('https://api.github.com/carlos13ra/SANTAFLOW-BOT2.git')
+let res = await fetch('https://api.github.com/carlos13ra/SANTAFLOW-BOT13.git')
 
 if (!res.ok) throw new Error('Error al obtener datos del repositorio')
 let json = await res.json()
@@ -18,7 +18,7 @@ txt += `> ✦ *Forks:* ${json.forks_count}\n`
 txt += `> ⬣ *Stars:* ${json.stargazers_count}\n`
 txt += `> *${dev}*`
 
-await conn.sendMessage(m.chat, {text: txt, contextInfo: { forwardingScore: 999, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterName: channelRD.name, newsletterJid: channelRD.id, }, externalAdReply: { title: packname, body: dev, thumbnailUrl: 'https://files.catbox.moe/3bmdrm.jpg', sourceUrl: redes, mediaType: 1, renderLargerThumbnail: true }}}, {quoted: m})
+await conn.sendMessage(m.chat, {text: txt, contextInfo: { forwardingScore: 999, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterName: channelRD.name, newsletterJid: channelRD.id, }, externalAdReply: { title: packname, body: dev, thumbnailUrl: 'https://i.postimg.cc/mZqG44Dy/1760212243057.jpg', sourceUrl: redes, mediaType: 1, renderLargerThumbnail: true }}}, {quoted: m})
 
 } catch {
 await conn.reply(m.chat, `${msm} Ocurrió un error.`, m)
