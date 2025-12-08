@@ -45,8 +45,6 @@ global.etiqueta = '@ᴄ`ᴀʀʟᴏs ʀ`ᴀᴍɪʀᴇᴢ ° ғ`ᴄ'
 //✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
 global.moneda = 'ᴇᴜʀᴏs💶'
-global.welcom1 = '💤 Bienvenido/a al grupo🎶\n❍ Edita con el comando *setwelcome*'
-global.welcom2 = '🔥 un miembro ha salido del grupo 🔥\n❍ Edita con el comando *setbye*'
 global.banner = 'https://files.cloudkuimages.guru/images/431fc1f481b5.jpg'
 global.avatar = 'https://files.cloudkuimages.guru/images/c0f1ee069e89.jpg'
 global.logo = 'https://files.cloudkuimages.guru/images/16d6e45c0565.jpg'
@@ -71,8 +69,19 @@ ch3: "120363404087331895@newsletter"
 }
 global.multiplier = 60
 
-//✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+///*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
+global.APIs = {
+xyro: { url: "https://xyro.site", key: null },
+yupra: { url: "https://api.yupra.my.id", key: null },
+vreden: { url: "https://api.vreden.web.id", key: null },
+delirius: { url: "https://api.delirius.store", key: null },
+zenzxz: { url: "https://api.zenzxz.my.id", key: null },
+siputzx: { url: "https://api.siputzx.my.id", key: null },
+adonix: { url: "https://api-adonix.ultraplus.click", key: 'the.shadow' }
+}
+
+//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 global.cheerio = cheerio
 global.fs = fs
 global.fetch = fetch
