@@ -87,10 +87,10 @@ ${secciones}
 
     await conn.sendMessage(m.chat, {
       video: { url: video },
-      gifPlayback: true,
+      gifPlayback: false,
       caption: menuText,
       contextInfo: {
-        mentionedJid: [m.sender],
+        //mentionedJid: [m.sender],
         isForwarded: true,
         forwardingScore: 999,
         forwardedNewsletterMessageInfo: {
