@@ -21,14 +21,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     const dia = new Date().toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
 
     const videos = [
-      'https://files.catbox.moe/jgfdmn.mp4',
-      'https://files.catbox.moe/wc8wcz.mp4',
-      'https://files.catbox.moe/t9frnr.mp4',
-      'https://files.catbox.moe/j4aew2.mp4',
-      'https://files.catbox.moe/1b5zis.mp4',
       'https://files.catbox.moe/j1bwtc.mp4',
-      'https://files.catbox.moe/jic49n.mp4',
-      'https://files.catbox.moe/p71bhi.mp4'
+      'https://files.catbox.moe/jic49n.mp4'
     ]
     const video = videos[Math.floor(Math.random() * videos.length)]
 
