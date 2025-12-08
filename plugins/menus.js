@@ -15,7 +15,7 @@ let handler = async (m, { conn }) => {
                         text: "╔═════════════════════╗\n║⬩𓊆◦ 𝙼𝙴𝙽𝚄𝚂 - 𝙳𝙸𝚂𝙿𝙾𝙽𝙸𝙱𝙻𝙴𝚂 ◦𓊇⬩\n╚═════════════════════╝\n\n❯l︴• \`menulist\`\n❯l︴• \`menuowner - dev\`\n❯l︴• \`menudescargas - menudl\`\n❯l︴• \`menusticker\`\n❯l︴• \`menusearch - menuse\`\n❯l︴• \`menulogos\`\n❯l︴• \`menunsfw - menu18\`\n❯l︴• \`menugrupo - menugp\`\n❯l︴• \`menuaudios - menu2\`\n❯l︴• \`menurpg\`\n❯l︴• \`menufun\`\n❯l︴• \`menutools\`\n❯l︴• \`menup\`"
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: "_ʀɪɴ ɪᴛᴏꜱʜɪ ʙᴏᴛ ✨_"
+                        text: "_sᴀɴᴛᴀғʟᴏᴡ ʙᴏᴛ ✨_"
                     }),
                     header: proto.Message.InteractiveMessage.Header.create({
                         hasMediaAttachment: true,
