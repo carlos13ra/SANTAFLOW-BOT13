@@ -4,11 +4,21 @@ import moment from 'moment-timezone'
 let handler = async (m, { conn, usedPrefix }) => {
   try {
     const userId = m.mentionedJid?.[0] || m.sender
-    const user = global.db.data.users[userId] || {}
+    const user = global.db?.data?.users?.[userId] || {}
+
+    const name = user.name || 'Desconocido'
     const premium = user.premium ? '✔️ Sí' : 'free'
     const uptime = clockString(process.uptime() * 1000)
-    const totalreg = Object.keys(global.db.data.users).length
-    const totalCommands = Object.keys(global.plugins).length
+    const totalreg = Object.keys(global.db?.data?.users || {}).length
+    const totalCommands = Object.keys(global.plugins || {}).length
+
+    const botname = global.botname || 'Bot'
+    const packname = global.packname || 'Menú'
+    const dev = global.dev || 'Developer'
+    const icono = global.icono || ''
+    const redes = global.redes || ''
+
+    const channelRD = global.channelRD || { id: '', name: '' }
 
     const hora = new Date().toLocaleTimeString('es-PE', { timeZone: 'America/Lima' })
     const fecha = new Date().toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Lima' })
@@ -20,7 +30,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     ]
     const video = videos[Math.floor(Math.random() * videos.length)]
 
-        const emojis = {
+    const emojis = {
       'main': '🦋', 'tools': '🛠️', 'audio': '🎧', 'group': '👥',
       'owner': '👑', 'fun': '🎮', 'info': 'ℹ️', 'internet': '🌐',
       'downloads': '⬇️', 'admin': '🧰', 'anime': '✨', 'nsfw': '🔞',
@@ -45,10 +55,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
       const emoji = emojis[tag] || '⭐'
-      return `╭┄┄┄୨༝୧┄☁┄⊰꒱❀꒰⊱┄☁┄୨༝୧┄┄┄╮
-┆╭┄〔 ${emoji} ${tag.toUpperCase()} 〕┄┄┄
-╭` + cmds.map(cmd => `┆┆• *${cmd}*`).join('\n') + `\n┆╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-╰┄┄┄୨༝୧┄☁┄⊰꒱❀꒰⊱┄☁┄୨༝୧┄┄┄╯`
+      return `╭┄〔 ${emoji} ${tag.toUpperCase()} 〕┄┄
+` + cmds.map(cmd => `┆• *${cmd}*`).join('\n') + `\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄`
     }).join('\n\n')
 
     let menuText = `
@@ -62,22 +70,45 @@ let handler = async (m, { conn, usedPrefix }) => {
 │ *ʟɪᴍɪᴛᴇ* » 10
 ╰━━━━━━━━━━━━━━━━━━⬣
 
-╭━━━〔 sᴛᴀᴛᴜs-ᴜsᴇʀ 〕━━⬣
-│ *ʙᴏᴛ* » bot gay
-│ *ᴛɪᴘᴏ* » ${(conn.user.jid == global.conn.user.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
+╭━━━〔 sᴛᴀᴛᴜs-ʙᴏᴛ 〕━━⬣
+│ *ʙᴏᴛ* » ${botname}
+│ *ᴛɪᴘᴏ* » ${(conn.user?.jid === global.conn?.user?.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
 │ *ᴄᴏᴍᴀɴᴅᴏs* » ${totalCommands}
 │ *ᴜsᴜᴀʀɪᴏs* » ${totalreg}
 │ *ᴀᴄᴛɪᴠᴏ* » ${uptime}
 │ *ᴅᴀᴛᴇ* » ${hora}, ${fecha}, ${dia}
 ╰━━━━━━━━━━━━━━━━━━⬣
  
-   *_LISTA DE COMANDOS BUG_*
+   *_LISTA DE COMANDOS_*
 ${secciones}
 `.trim()
 
- await m.react('🎋')
-await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
-}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
+    await m.react('🎋')
+
+    await conn.sendMessage(m.chat, {
+      video: { url: video },
+      caption: menuText,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: channelRD.id ? {
+          newsletterJid: channelRD.id,
+          newsletterName: channelRD.name,
+          serverMessageId: -1
+        }
+        forwardingScore: 999,
+        externalAdReply: {
+          title: packname,
+          body: dev,
+          thumbnailUrl: icono,
+          sourceUrl: redes,
+          mediaType: 1,
+          renderLargerThumbnail: false
+        }
+      },
+      gifPlayback: true,
+      gifAttribution: 0
+    }, { quoted: null })
 
   } catch (e) {
     console.error(e)
@@ -108,4 +139,4 @@ function ucapan() {
   else if (time >= 12 && time < 18) res = "ʙᴜᴇɴᴀs ᴛᴀʀᴅᴇs 🌤️"
   else if (time >= 18) res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
   return res
-   }
+}
