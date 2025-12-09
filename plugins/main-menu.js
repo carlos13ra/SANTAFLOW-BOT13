@@ -75,32 +75,9 @@ let handler = async (m, { conn, usedPrefix }) => {
 ${secciones}
 `.trim()
 
-    await m.react('🎋')
-
-    await conn.sendMessage(m.chat, {
-      video: { url: video },
-      caption: menuText,
-      contextInfo: {
-        mentionedJid: [m.sender],
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: channelRD.id ? {
-          newsletterJid: channelRD.id,
-          newsletterName: channelRD.name,
-          serverMessageId: -1
-        }
-        forwardingScore: 999,
-        externalAdReply: {
-          title: packname,
-          body: dev,
-          thumbnailUrl: icono,
-          sourceUrl: redes,
-          mediaType: 1,
-          renderLargerThumbnail: false
-        }
-      },
-      gifPlayback: true,
-      gifAttribution: 0
-    }, { quoted: null })
+await m.react('🎋')
+await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { /*mentionedJid: [m.sender],*/ isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: botname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
   } catch (e) {
     console.error(e)
