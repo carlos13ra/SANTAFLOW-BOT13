@@ -46,16 +46,16 @@ let handler = async (m, { conn, usedPrefix }) => {
     for (let tag in grupos) grupos[tag].sort((a, b) => a.localeCompare(b))
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-      const emoji = emojis[tag] || '🌱'
+      const emoji = emojis[tag] || '❄️'
       return `
 > ${emoji} ${tag.toUpperCase()}
-${cmds.map(cmd => `✎‿ ${cmd}`).join('\n')}
+${cmds.map(cmd => `✎ ${cmd}`).join('\n')}
 `
     }).join('\n')
 
 let menuText = `
 ╔══❄️☃️════••════☃️❄️══╗
-        𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾-𝑩𝑶𝑻
+          𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾-𝑩𝑶𝑻
 ╚══❄️☃️════••════☃️❄️══╝
 
 🎁✨ ¡${ucapan()} @${userId.split('@')[0]}! ✨🎁
