@@ -1,31 +1,32 @@
 import { promises as fs } from 'fs'
 
-// rutas
 const charactersFilePath = './src/database/characters.json'
 
-// importamos cooldowns de tus otros comandos
-import { cooldowns as rollCooldowns } from './gacha-rollwaifu.js'
-import { cooldowns as claimCooldowns } from './gacha-claim.js'
+// Inicializamos global si no existe
+if (!global.gachaCooldown) global.gachaCooldown = {
+    roll: {},
+    claim: {}
+}
 
 let handler = async (m, { conn }) => {
     const userId = m.sender
     const now = Date.now()
 
     try {
-        // leer personajes
+        // Leer characters.json
         const data = await fs.readFile(charactersFilePath, 'utf-8')
         const characters = JSON.parse(data)
 
-        // personajes reclamados por el usuario
-        const claimed = characters.filter(ch => ch.user === userId)
+        // Personajes reclamados por el usuario
+        const claimed = characters.filter(c => c.user === userId)
 
         const claimedCount = claimed.length
-        const totalValue = claimed.reduce((s, c) => s + Number(c.value || 0), 0)
+        const totalValue = claimed.reduce((sum, c) => sum + Number(c.value || 0), 0)
 
         const totalCharacters = characters.length
         const totalSeries = new Set(characters.map(c => c.source)).size
 
-        // función para formatear cooldown
+        // Formatear cooldown
         function format(time) {
             if (!time || now >= time) return 'Ahora'
             let r = Math.floor((time - now) / 1000)
@@ -34,9 +35,9 @@ let handler = async (m, { conn }) => {
             return `${m}m ${s}s`
         }
 
-        const rollCD = format(rollCooldowns[userId])
-        const claimCD = format(claimCooldowns[userId])
-        const voteCD = 'Ahora'  // fijo
+        const rollCD = format(global.gachaCooldown.roll[userId])
+        const claimCD = format(global.gachaCooldown.claim[userId])
+        const voteCD = 'Ahora'
 
         const username = m.pushName || userId.split('@')[0]
 
