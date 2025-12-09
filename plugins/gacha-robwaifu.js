@@ -23,7 +23,10 @@ async function saveCharacters(characters) {
 let handler = async (m, { conn }) => {
 
     const thief = m.sender;
-    const victim = m.mentionedJid ? m.mentionedJid[0] : null;
+
+    // 🔥 FORMA CORRECTA DE LEER MENCIONES
+    const victim = m?.message?.extendedTextMessage?.contextInfo?.mentionedJid?.[0];
+
     const now = Date.now();
 
     if (!victim)
@@ -43,7 +46,6 @@ let handler = async (m, { conn }) => {
     try {
         let characters = await loadCharacters();
 
-        // Buscar personajes reclamados por la víctima
         let victimWaifus = characters.filter(c => c.user === victim);
 
         if (victimWaifus.length === 0)
@@ -57,7 +59,6 @@ let handler = async (m, { conn }) => {
         if (!success)
             return conn.reply(m.chat, '《✧》Fallaste en el robo, la waifu te dio una patada y escapó 😭', m);
 
-        // Elegir waifu aleatoria para robar
         let stolen = victimWaifus[Math.floor(Math.random() * victimWaifus.length)];
 
         // Transferir waifu
@@ -66,7 +67,8 @@ let handler = async (m, { conn }) => {
 
         await saveCharacters(characters);
 
-        return conn.reply(m.chat,
+        return conn.reply(
+            m.chat,
             `✦ *Robo Exitoso*\n\n` +
             `💘 *Waifu robada:* ${stolen.name}\n` +
             `👤 *A:* @${victim.split('@')[0]}\n` +
