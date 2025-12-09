@@ -53,22 +53,22 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     let menuText = `
 > ✧ Hola! @${userId.split('@')[0]} soy ${botname} aquí tienes la lista de comandos 
-> ✧  ${ucapan()}
+> ✧  ${ucapan()} Feliz navidad te decea Santaflow ☃️❄️
 
 ╭━━━〔 \`sᴛᴀᴛᴜs-ᴜsᴇʀ\` 〕━━⬣
-│ *ᴜsᴇʀ* » ${name}
-│ *ᴘʀᴇᴍɪᴜᴍ* » ${premium}
-│ *ʀᴇɢɪsᴛʀᴀᴅᴏ* » ${user.registered ? '✔ SI' : '✘ NO'}
-│ *ʟɪᴍɪᴛᴇ* » 10
+│ ❄️ *ᴜsᴇʀ* » ${name}
+│ ❄️ *ᴘʀᴇᴍɪᴜᴍ* » ${premium}
+│ ❄️ *ʀᴇɢɪsᴛʀᴀᴅᴏ* » ${user.registered ? '✔ SI' : '✘ NO'}
+│ ❄️ *ʟɪᴍɪᴛᴇ* » 10
 ╰━━━━━━━━━━━━━━━━━━⬣
 
 ╭━━━〔 \`sᴛᴀᴛᴜs-ʙᴏᴛ\` 〕━━⬣
-│ *ʙᴏᴛ* » ${botname}
-│ *ᴛɪᴘᴏ* » ${(conn.user?.jid === global.conn?.user?.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
-│ *ᴄᴏᴍᴀɴᴅᴏs* » ${totalCommands}
-│ *ᴜsᴜᴀʀɪᴏs* » ${totalreg}
-│ *ᴀᴄᴛɪᴠᴏ* » ${uptime}
-│ *ᴅᴀᴛᴇ* » ${hora}, ${fecha}, ${dia}
+│ 🎧 *ʙᴏᴛ* » ${botname}
+│ ⛄ *ᴛɪᴘᴏ* » ${(conn.user?.jid === global.conn?.user?.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
+│ ❄️ *ᴄᴏᴍᴀɴᴅᴏs* » ${totalCommands}
+│ ⭐ *ᴜsᴜᴀʀɪᴏs* » ${totalreg}
+│ 🗿 *ᴀᴄᴛɪᴠᴏ* » ${uptime}
+│ 🥭 *ᴅᴀᴛᴇ* » ${hora}, ${fecha}, ${dia}
 ╰━━━━━━━━━━━━━━━━━━⬣
  
    *_LISTA DE COMANDOS_*
@@ -77,7 +77,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ${secciones}
 `.trim()
 
-await m.react('🎋')
+await m.react('🎧')
 await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { /*mentionedJid: [m.sender],*/ isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: botname, body: dev, thumbnailUrl: 'https://files.catbox.moe/fedlqm.jpg', sourceUrl: 'https://chat.whatsapp.com/K5BVfhQviJ00M5aJGv3Epc', mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: m })
 
