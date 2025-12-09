@@ -12,14 +12,6 @@ let handler = async (m, { conn, usedPrefix }) => {
     const totalreg = Object.keys(global.db?.data?.users || {}).length
     const totalCommands = Object.keys(global.plugins || {}).length
 
-    const botname = global.botname || 'Bot'
-    const packname = global.packname || 'Menú'
-    const dev = global.dev || 'Developer'
-    const icono = global.icono || ''
-    const redes = global.redes || ''
-
-    const channelRD = global.channelRD || { id: '', name: '' }
-
     const hora = new Date().toLocaleTimeString('es-PE', { timeZone: 'America/Lima' })
     const fecha = new Date().toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Lima' })
     const dia = new Date().toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
