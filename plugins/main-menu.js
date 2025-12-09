@@ -26,15 +26,16 @@ let handler = async (m, { conn, usedPrefix }) => {
     ]
     const video = videos[Math.floor(Math.random() * videos.length)]
 
-    const emojis = {
-      main: '🦋', tools: '🛠️', audio: '🎧', group: '👥', owner: '👑',
-      fun: '🎮', info: 'ℹ️', internet: '🌐', downloads: '⬇️', admin: '🧰',
-      anime: '✨', search: '🔍', sticker: '🖼️', game: '🕹️', premium: '💎', bot: '🤖'
+        const emojis = {
+      'main': '🦋', 'tools': '🛠️', 'audio': '🎧', 'group': '👥',
+      'owner': '👑', 'fun': '🎮', 'info': 'ℹ️', 'internet': '🌐',
+      'downloads': '⬇️', 'admin': '🧰', 'anime': '✨', 'nsfw': '🔞',
+      'search': '🔍', 'sticker': '🖼️', 'game': '🕹️', 'premium': '💎', 'bot': '🤖'
     }
 
     let grupos = {}
     for (let plugin of Object.values(global.plugins || {})) {
-      if (!plugin?.help || !plugin?.tags) continue
+      if (!plugin.help || !plugin.tags) continue
       for (let tag of plugin.tags) {
         if (!grupos[tag]) grupos[tag] = []
         for (let help of plugin.help) {
@@ -43,65 +44,50 @@ let handler = async (m, { conn, usedPrefix }) => {
         }
       }
     }
-    for (let tag in grupos) grupos[tag].sort((a, b) => a.localeCompare(b))
+
+    for (let tag in grupos) {
+      grupos[tag].sort((a, b) => a.localeCompare(b))
+    }
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-      const emoji = emojis[tag] || '🌱'
-      return `
-> ${emoji} ${tag.toUpperCase()}
-${cmds.map(cmd => ` ۫🌴ֹ 𔐼ֹ֪➩ \`\`\`${cmd}`).join('\n')}\`\`\`
-`
-    }).join('\n')
-let menuText = `
-╔══❄️☃️════••════☃️❄️══╗
-          𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾-𝑩𝑶𝑻
-╚══❄️☃️════••════☃️❄️══╝
+      const emoji = emojis[tag] || '⭐'
+      return `╭━━━〔 ${emoji} ${tag.toUpperCase()} 〕━━⬣\n` + cmds.map(cmd => `┃ ✦ ${cmd}`).join('\n') + `\n╰━━━〔 ✦ 〕━━⬣`
+    }).join('\n\n')
 
-🎁✨ ¡${ucapan()} @${userId.split('@')[0]}! ✨🎁
-🎄 Bienvenido al menú mágico de Navidad 🎅  
+    let menuText = `
+❉｡･:*˚:✧｡ sᴀɴᴛᴀғʟᴏᴡ - ʙᴏᴛ ｡✧:˚*:･｡❉
+⊱ ────── {.⋅ ✯ ⋅.} ────── ⊰
 
-𝗜 𝗡 𝗙 𝗢 - 𝗨 𝗦 𝗘 𝗥 💫
-﹊﹊﹊﹊﹊﹊﹊﹊﹊
-ᴜsᴇʀ: ${name}
-ɴɪᴠᴇʟ: ${level}
-ᴇxᴘ ᴛᴏᴛᴀʟ: ${exp}
-ʀᴀɴɢᴏ: ${role}
-─────────────────────────
+☁️ ${ucapan()} @${userId.split('@')[0]} ⚡
 
-𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ☃️
-﹊﹊﹊﹊﹊﹊﹊﹊﹊
-👑 ᴏᴡɴᴇʀ: wa.me/${suittag}
-🤖 ʙᴏᴛ: ${(conn.user.jid == global.conn.user.jid ? '☃️ ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '⛄ sᴜʙ ʙᴏᴛ')}
-📚 ᴄᴏᴍᴀɴᴅᴏs: ${totalCommands}
-🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: ${totalreg}
-⏱️ ʀᴜɴᴛɪᴍᴇ: ${uptime}
-──────────────────────────
+  \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗨 𝗦 𝗘 𝗥 ]\`
+  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+> ✩⚞ ᴜsᴇʀ: *${name}*
+> ✩⚞ ɴɪᴠᴇʟ: *${level}*
+> ✩⚞ ᴇxᴘ ᴛᴏᴛᴀʟ: *${exp}*
+> ✩⚞ ʀᴀɴɢᴏ: ${role}
+──────────────────────
 
-𝗜𝗡𝗙𝗢 - 𝗙𝗘𝗖𝗛𝗔 ❄️
-﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
-⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: ${hora}
-🍩 ғᴇᴄʜᴀ: ${fecha}
-☘️ ᴅɪᴀ: ${dia}
-──────────────────────────
+  \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ]\`
+  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+> ✧⚞ 👑 ᴏᴡɴᴇʀ: *wa.me/${suittag}*
+> ✧⚞ 🤖 ʙᴏᴛ: ${(conn.user.jid == global.conn.user.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
+> ✧⚞ 📚 ᴄᴏᴍᴀɴᴅᴏs: *${totalCommands}*
+> ✧⚞ 🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: *${totalreg}*
+> ✧⚞ ⏱️ ʀᴜɴᴛɪᴍᴇ: *${uptime}*
+──────────────────────
 
-❄️═════════════════❄️
-💫🎆 𝐅𝐄𝐋𝐈𝐙 𝐍𝐀𝐕𝐈𝐃𝐀𝐃 𝐘 𝐏𝐑𝐎𝐒𝐏𝐄𝐑𝐎 𝐀Ñ𝐎 𝐍𝐔𝐄𝐕𝐎 2026 🎆💫  
-🎅 Que tu corazón brille de alegría,  
-🎁 tus días se llenen de magia y amor,  
-y tus sueños renazcan con esperanza ✨  
-🎇 ¡Gracias por compartir esta navidad y 
-💫 prospero año nuevo con nosotros! 💖  
-❄️═════════════════❄️
+   \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗙 𝗘 𝗖 𝗛 𝗔 ]\`
+  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+> ✧⚞ ⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: *${hora}*
+> ✧⚞ 🍩 ғᴇᴄʜᴀ: *${fecha}*
+> ✧⚞ ☘️ ᴅɪᴀ: *${dia}*
+──────────────────────
 
 ${secciones}
-
-╭ *SANTAFLOW BOT* ╮
-🎁 “Tu ayudante mágico en esta Navidad y Año Nuevo”  
-🎅 © 2025 - 2026 By Carlos Ramírez  
-╰──────────────────────────╯
 `.trim()
 
-await m.react('❄️')
+ await m.react('🎋')
 await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
@@ -134,4 +120,4 @@ function ucapan() {
   else if (time >= 12 && time < 18) res = "ʙᴜᴇɴᴀs ᴛᴀʀᴅᴇs 🌤️"
   else if (time >= 18) res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
   return res
- }
+   }
