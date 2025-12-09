@@ -1,45 +1,43 @@
 import { promises as fs } from 'fs'
 
+// rutas
 const charactersFilePath = './src/database/characters.json'
 
-// Cooldowns globales que comparten los otros comandos
+// importamos cooldowns de tus otros comandos
 import { cooldowns as rollCooldowns } from './gacha-rollwaifu.js'
 import { cooldowns as claimCooldowns } from './gacha-claim.js'
 
 let handler = async (m, { conn }) => {
     const userId = m.sender
+    const now = Date.now()
 
     try {
+        // leer personajes
         const data = await fs.readFile(charactersFilePath, 'utf-8')
         const characters = JSON.parse(data)
 
-        // ---- PERSONAJES RECLAMADOS ----
-        const claimed = characters.filter(c => c.user === userId)
+        // personajes reclamados por el usuario
+        const claimed = characters.filter(ch => ch.user === userId)
 
         const claimedCount = claimed.length
-        const totalValue = claimed.reduce((sum, ch) => sum + Number(ch.value || 0), 0)
+        const totalValue = claimed.reduce((s, c) => s + Number(c.value || 0), 0)
 
         const totalCharacters = characters.length
         const totalSeries = new Set(characters.map(c => c.source)).size
 
-        // ---- COOLDOWNS ----
-        const now = Date.now()
-
-        function formatCooldown(time) {
+        // función para formatear cooldown
+        function format(time) {
             if (!time || now >= time) return 'Ahora'
-
-            let remaining = Math.floor((time - now) / 1000)
-            let min = Math.floor(remaining / 60)
-            let sec = remaining % 60
-
-            return `${min}m ${sec}s`
+            let r = Math.floor((time - now) / 1000)
+            let m = Math.floor(r / 60)
+            let s = r % 60
+            return `${m}m ${s}s`
         }
 
-        const rollCD = formatCooldown(rollCooldowns[userId])
-        const claimCD = formatCooldown(claimCooldowns[userId])
-        const voteCD = 'Ahora' // Si luego quieres lo hacemos real
+        const rollCD = format(rollCooldowns[userId])
+        const claimCD = format(claimCooldowns[userId])
+        const voteCD = 'Ahora'  // fijo
 
-        // ---- MENSAJE FINAL ----
         const username = m.pushName || userId.split('@')[0]
 
         const msg = `
@@ -57,8 +55,8 @@ let handler = async (m, { conn }) => {
 
         await conn.reply(m.chat, msg, m)
 
-    } catch (error) {
-        await conn.reply(m.chat, `✘ Error al cargar información: ${error.message}`, m)
+    } catch (e) {
+        await conn.reply(m.chat, `✘ Error en ginfo: ${e.message}`, m)
     }
 }
 
