@@ -46,67 +46,69 @@ let handler = async (m, { conn, usedPrefix }) => {
     for (let tag in grupos) grupos[tag].sort((a, b) => a.localeCompare(b))
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-      const emoji = emojis[tag] || '🌱'
-      return `
-> ${emoji} ${tag.toUpperCase()}
-${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
-`
-    }).join('\n')
+  const emoji = emojis[tag] || '⭐'
+  return `╭🎄${emoji} ${tag.toUpperCase()}🎄─⬣\n`
+    + cmds.map(cmd => `┃ ☃️ ${cmd}`).join('\n')
+    + `\n╰──🎁 ✦ 🎁──⬣`
+}).join('\n\n')
 
-    const menuText = `
-╔═══❄️ 𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾 𝑩𝑶𝑻 ❄️═══╗
-┃ ✨ ${ucapan()} @${userId.split('@')[0]} ✨
-╚══════════════════════╝
+let menuText = `
+╔❄️☃️═••═☃️❄️═╗
+ 𝑺𝑨𝑵𝑻𝑨𝑭𝑳𝑶𝑾-𝑩𝑶𝑻
+╚❄️☃️═••═☃️❄️═╝
 
-╭───〔 🎅 𝗣𝗘𝗥𝗙𝗜𝗟 〕───
-│ 👤 *Usuario:* ${name}
-│ 🎚 *Nivel:* ${level}
-│ 🌟 *Exp:* ${exp}
-│ 🎖 *Rango:* ${role}
-╰──────────────────
+🎁✨ ¡${ucapan()} @${userId.split('@')[0]}! ✨🎁
+🎄 Bienvenido al menú mágico de Navidad 🎅  
 
-╭───〔 🤖 𝗘𝗦𝗧𝗔𝗗𝗢 𝗗𝗘𝗟 𝗕𝗢𝗧 〕───
-│ 👑 *Owner:* wa.me/51${suittag}
-│ 💻 *Modo:* ${(conn.user.jid === global.conn.user.jid) ? 'Bot oficial' : 'Sub bot'}
-│ 📚 *Comandos:* ${totalCommands}
-│ 👥 *Usuarios:* ${totalreg}
-│ ⏱ *Uptime:* ${uptime}
-│ 🌴 *Date:* ${hora}, ${fecha}, ${dia}
-╰──────────────────
+𝗜 𝗡 𝗙 𝗢 - 𝗨 𝗦 𝗘 𝗥 💫
+﹊﹊﹊﹊﹊﹊﹊﹊﹊
+ᴜsᴇʀ: ${name}
+ɴɪᴠᴇʟ: ${level}
+ᴇxᴘ ᴛᴏᴛᴀʟ: ${exp}
+ʀᴀɴɢᴏ: ${role}
+──────────────────────
+
+𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ☃️
+﹊﹊﹊﹊﹊﹊﹊﹊﹊
+👑 ᴏᴡɴᴇʀ: wa.me/51${suittag}
+🤖 ʙᴏᴛ: ${(conn.user.jid == global.conn.user.jid ? '☃️ ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '⛄ sᴜʙ ʙᴏᴛ')}
+📚 ᴄᴏᴍᴀɴᴅᴏs: ${totalCommands}
+🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: ${totalreg}
+⏱️ ʀᴜɴᴛɪᴍᴇ: ${uptime}
+──────────────────────
+
+𝗜𝗡𝗙𝗢 - 𝗙𝗘𝗖𝗛𝗔 ❄️
+﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: ${hora}
+🍩 ғᴇᴄʜᴀ: ${fecha}
+☘️ ᴅɪᴀ: ${dia}
+──────────────────────
+
+❄️═════════❄️
+💫🎆 𝐅𝐄𝐋𝐈𝐙 𝐍𝐀𝐕𝐈𝐃𝐀𝐃 𝐘 𝐏𝐑𝐎𝐒𝐏𝐄𝐑𝐎 𝐀Ñ𝐎 𝐍𝐔𝐄𝐕𝐎 2026 🎆💫  
+🎅 Que tu corazón brille de alegría,  
+🎁 tus días se llenen de magia y amor,  
+🎄 y tus sueños renazcan con esperanza ✨  
+🎇 ¡Gracias por compartir esta navidad y 
+💫 prospero año nuevo con nosotros! 💖  
+❄️═════════❄️
 
 ${secciones}
+
+╭ *SANTAFLOW BOT* ╮
+🎁 “Tu ayudante mágico en esta Navidad y Año Nuevo”  
+🎅 © 2025 - 2026 By Carlos Ramírez  
+╰──────────────────────────╯
 `.trim()
 
-    await m.react('❄️')
-
-    await conn.sendMessage(m.chat, {
-      video: { url: video },
-      gifPlayback: false,
-      caption: menuText,
-      contextInfo: {
-        //mentionedJid: [m.sender],
-        isForwarded: true,
-        forwardingScore: 999,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: channelRD.id,
-          newsletterName: channelRD.name,
-          serverMessageId: -1
-        },
-        externalAdReply: {
-          title: packname,
-          body: dev,
-          thumbnailUrl: icono,
-          sourceUrl: redes,
-          mediaType: 1,
-          renderLargerThumbnail: false
-        }
-      }
-    }, { quoted: m })
+await m.react('❄️')
+await conn.sendMessage(m.chat, { video: { url: video }, caption: menuText, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: packname, body: dev, thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, {
-      text: `✘ Error al mostrar el menú:\n${e.message}`,
+      text: `✘ Error al enviar el menú: ${e.message}`,
       mentions: [m.sender]
     }, { quoted: m })
   }
@@ -114,9 +116,8 @@ ${secciones}
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['menu', 'menú', 'help', 'allmenu', 'menucompleto']
+handler.command = ['menu', 'menú', 'help', 'allmenú', 'allmenu', 'menucompleto']
 handler.register = true
-
 export default handler
 
 function clockString(ms) {
@@ -128,7 +129,9 @@ function clockString(ms) {
 
 function ucapan() {
   const time = moment.tz('America/Lima').format('HH')
-  if (time >= 5 && time < 12) return "Buenos días ☀️"
-  if (time >= 12 && time < 18) return "Buenas tardes 🌤️"
-  return "Buenas noches 🌙"
-}
+  let res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
+  if (time >= 5 && time < 12) res = "ʙᴜᴇɴᴏs ᴅɪᴀs ☀️"
+  else if (time >= 12 && time < 18) res = "ʙᴜᴇɴᴀs ᴛᴀʀᴅᴇs 🌤️"
+  else if (time >= 18) res = "ʙᴜᴇɴᴀs ɴᴏᴄʜᴇs 🌙"
+  return res
+ }
