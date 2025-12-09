@@ -4,14 +4,8 @@ import moment from 'moment-timezone'
 let handler = async (m, { conn, usedPrefix }) => {
   try {
     const userId = m.mentionedJid?.[0] || m.sender
-    const userData = global.db.data.users[userId] || {}
-
-    const exp = userData.exp || 0
-    const coin = userData.coin || 0
-    const level = userData.level || 0
-    const role = userData.role || 'Sin rango'
-    const name = await conn.getName(userId)
-
+    const user = global.db.data.users[userId] || {}
+    const premium = user.premium ? '✔️ Sí' : 'free'
     const uptime = clockString(process.uptime() * 1000)
     const totalreg = Object.keys(global.db.data.users).length
     const totalCommands = Object.keys(global.plugins).length
@@ -51,39 +45,33 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
       const emoji = emojis[tag] || '⭐'
-      return `╭━━━〔 ${emoji} ${tag.toUpperCase()} 〕━━⬣\n` + cmds.map(cmd => `┃ ✦ ${cmd}`).join('\n') + `\n╰━━━〔 ✦ 〕━━⬣`
+      return `╭┄┄┄୨༝୧┄☁┄⊰꒱❀꒰⊱┄☁┄୨༝୧┄┄┄╮
+┆╭┄〔 ${emoji} ${tag.toUpperCase()} 〕┄┄┄
+╭` + cmds.map(cmd => `┆┆• *${cmd}*`).join('\n') + `\n┆╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+╰┄┄┄୨༝୧┄☁┄⊰꒱❀꒰⊱┄☁┄୨༝୧┄┄┄╯`
     }).join('\n\n')
 
     let menuText = `
-❉｡･:*˚:✧｡ sᴀɴᴛᴀғʟᴏᴡ - ʙᴏᴛ ｡✧:˚*:･｡❉
-⊱ ────── {.⋅ ✯ ⋅.} ────── ⊰
+> ✧ Hola! @${userId.split('@')[0]} soy ${botname} aquí tienes la lista de comandos 
+> ✧  ${ucapan()}
 
-☁️ ${ucapan()} @${userId.split('@')[0]} ⚡
+╭━━━〔 \`sᴛᴀᴛᴜs-ᴜsᴇʀ\` 〕━━⬣
+│ *ᴜsᴇʀ* » ${name}
+│ *ᴘʀᴇᴍɪᴜᴍ* » ${premium}
+│ *ʀᴇɢɪsᴛʀᴀᴅᴏ* » ${user.registered ? '✔ SI' : '✘ NO'}
+│ *ʟɪᴍɪᴛᴇ* » 10
+╰━━━━━━━━━━━━━━━━━━⬣
 
-  \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗨 𝗦 𝗘 𝗥 ]\`
-  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
-> ✩⚞ ᴜsᴇʀ: *${name}*
-> ✩⚞ ɴɪᴠᴇʟ: *${level}*
-> ✩⚞ ᴇxᴘ ᴛᴏᴛᴀʟ: *${exp}*
-> ✩⚞ ʀᴀɴɢᴏ: ${role}
-──────────────────────
-
-  \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧 ]\`
-  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
-> ✧⚞ 👑 ᴏᴡɴᴇʀ: *wa.me/${suittag}*
-> ✧⚞ 🤖 ʙᴏᴛ: ${(conn.user.jid == global.conn.user.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
-> ✧⚞ 📚 ᴄᴏᴍᴀɴᴅᴏs: *${totalCommands}*
-> ✧⚞ 🧑‍🤝‍🧑 ᴛᴏᴛᴀʟ ᴜsᴇʀs: *${totalreg}*
-> ✧⚞ ⏱️ ʀᴜɴᴛɪᴍᴇ: *${uptime}*
-──────────────────────
-
-   \`[ 𝗜 𝗡 𝗙 𝗢 - 𝗙 𝗘 𝗖 𝗛 𝗔 ]\`
-  ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
-> ✧⚞ ⚡ ʜᴏʀᴀ ᴘᴇʀᴜ: *${hora}*
-> ✧⚞ 🍩 ғᴇᴄʜᴀ: *${fecha}*
-> ✧⚞ ☘️ ᴅɪᴀ: *${dia}*
-──────────────────────
-
+╭━━━〔 sᴛᴀᴛᴜs-ᴜsᴇʀ 〕━━⬣
+│ *ʙᴏᴛ* » bot gay
+│ *ᴛɪᴘᴏ* » ${(conn.user.jid == global.conn.user.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
+│ *ᴄᴏᴍᴀɴᴅᴏs* » ${totalCommands}
+│ *ᴜsᴜᴀʀɪᴏs* » ${totalreg}
+│ *ᴀᴄᴛɪᴠᴏ* » ${uptime}
+│ *ᴅᴀᴛᴇ* » ${hora}, ${fecha}, ${dia}
+╰━━━━━━━━━━━━━━━━━━⬣
+ 
+   *_LISTA DE COMANDOS BUG_*
 ${secciones}
 `.trim()
 
