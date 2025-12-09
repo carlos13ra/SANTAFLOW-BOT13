@@ -49,7 +49,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       const emoji = emojis[tag] || '🌱'
       return `
 > ${emoji} ${tag.toUpperCase()}
-${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
+${cmds.map(cmd => `✎‿ ${cmd}`).join('\n')}
 `
     }).join('\n')
 
