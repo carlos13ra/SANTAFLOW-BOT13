@@ -47,8 +47,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
       const emoji = emojis[tag] || '⭐'
-      return `╭┄〔 ${emoji} ${tag.toUpperCase()} 〕┄┄
-` + cmds.map(cmd => `┆• *${cmd}*`).join('\n') + `\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄`
+      return `╭┄〔 \`${tag.toUpperCase()}\` 〕┄┄
+` + cmds.map(cmd => `┆ ➩ ${cmd}`).join('\n') + `\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄`
     }).join('\n\n')
 
     let menuText = `
@@ -62,7 +62,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 │ *ʟɪᴍɪᴛᴇ* » 10
 ╰━━━━━━━━━━━━━━━━━━⬣
 
-╭━━━〔 sᴛᴀᴛᴜs-ʙᴏᴛ 〕━━⬣
+╭━━━〔 \`sᴛᴀᴛᴜs-ʙᴏᴛ\` 〕━━⬣
 │ *ʙᴏᴛ* » ${botname}
 │ *ᴛɪᴘᴏ* » ${(conn.user?.jid === global.conn?.user?.jid ? '🌟 ʙᴏᴛ ᴏғɪᴄɪᴀʟ' : '✨ sᴜʙ ʙᴏᴛ')}
 │ *ᴄᴏᴍᴀɴᴅᴏs* » ${totalCommands}
@@ -72,6 +72,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ╰━━━━━━━━━━━━━━━━━━⬣
  
    *_LISTA DE COMANDOS_*
+
+
 ${secciones}
 `.trim()
 
