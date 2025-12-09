@@ -46,11 +46,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     for (let tag in grupos) grupos[tag].sort((a, b) => a.localeCompare(b))
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
-  const emoji = emojis[tag] || '⭐'
-  return `╭🎄${emoji} ${tag.toUpperCase()}🎄─⬣\n`
-    + cmds.map(cmd => `┃ ☃️ ${cmd}`).join('\n')
-    + `\n╰──🎁 ✦ 🎁──⬣`
-}).join('\n\n')
+      const emoji = emojis[tag] || '🌱'
+      return `
+> ${emoji} ${tag.toUpperCase()}
+${cmds.map(cmd => `✎‿ \`\`\`${cmd}`).join('\n')}\`\`\`
+`
+    }).join('\n')
 
 let menuText = `
 ╔══❄️☃️════••════☃️❄️══╗
