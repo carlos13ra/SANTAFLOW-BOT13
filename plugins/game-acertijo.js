@@ -36,9 +36,12 @@ delete conn.tekateki[id]
 ]
 global.db.data.users[m.sender].lastAcet = now
 }
-handler.help = ['acertijo']
-handler.tags = ['game']
-handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i
+handler.help = ['acertijo', 'acert', 'acrrtijos']; 
+ handler.tags = ['game']; 
+handler.command = ['acertijo', 'acert', 'acertijos']
+handler.group = true
+handler.register = true
+
 export default handler
 
 function msToTime(duration) {
