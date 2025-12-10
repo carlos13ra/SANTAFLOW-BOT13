@@ -1,14 +1,14 @@
 let handler = async (m, { conn, usedPrefix, command, args }) => {
   let chat = global.db.data.chats[m.chat];
   if (!(m.chat in global.db.data.chats)) {
-    return conn.reply(m.chat, `✧ *𝐄𝐒𝐓𝐄 𝐓𝐄𝐑𝐑𝐄𝐍𝐎 𝐀Ú𝐍 𝐍𝐎 𝐄𝐒 𝐃𝐄 𝐑𝐈𝐍 𝐈𝐓𝐎𝐒𝐇𝐈...* ⚽`, m);
+    return conn.reply(m.chat, `✧ *𝐄𝐒𝐓𝐄 𝐃𝐄𝐂𝐄𝐍𝐀𝐑𝐈𝐎 𝐄𝐒 𝐃𝐄 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖...* 🎧`, m);
   }
 
   if (command === 'bot') {
     if (args.length === 0) {
       const estado = chat.isBanned ? '✘ 𝐃𝐄𝐒𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎' : '✔ 𝐀𝐂𝐓𝐈𝐕𝐎';
-      const info = `▰▰▰〔 ✧ 𝑪𝑶𝑵𝑻𝑹𝑶𝑳 : 𝑹𝑰𝑵 𝑰𝑻𝑶𝑺𝑯𝑰 ✧ 〕▰▰▰
-▣ Solo los directores pueden gestionar a Rin.
+      const info = `▰▰▰〔 ✧ 𝑪𝑶𝑵𝑻𝑹𝑶𝑳 : 𝐒𝐀𝐍𝐓𝐀𝐅𝐋𝐎𝐖 ✧ 〕▰▰▰
+▣ Solo los directores pueden gestionar a santa.
 
 ➤ 〔 𝑪𝑶𝑴𝑨𝑵𝑫𝑶𝑺 〕
  ⇢  ⌬ ${usedPrefix}bot on   | ➜ Activar
