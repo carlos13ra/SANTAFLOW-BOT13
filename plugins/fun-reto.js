@@ -10,7 +10,7 @@ let handler = async (m, { conn }) => {
 
 ✦ ${pickRandom(global.bucin)}
 
-━━━✦ 「 𝗥𝗜𝗡 𝗜𝗧𝗢𝗦𝗛𝗜 」✦━━━`.trim()
+━━━✦ 「 SANTAFLOW 」✦━━━`.trim()
 
   const fkontak = {
     key: {
@@ -20,7 +20,7 @@ let handler = async (m, { conn }) => {
     },
     message: {
       contactMessage: {
-        displayName: 'The Shadow Brokers - Bot',
+        displayName: 'The Carlos Brokers - Bot',
         vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;The Shadow Brokers;;;\nFN:The Shadow Brokers\nTEL;type=CELL;type=VOICE;waid=51969214380:51969214380\nEND:VCARD`,
       },
     },
@@ -31,7 +31,7 @@ let handler = async (m, { conn }) => {
     isForwarded: true,
     externalAdReply: {
       showAdAttribution: true,
-      title: "𝑅𝐼𝑁 𝐼𝑇𝑂𝑆𝐻𝐼 𝑀𝐷 𝐵𝑌 𝐷𝐸𝑉.𝑆𝐻𝐴𝐷𝑂𝑊",
+      title: "SANTAFLOW BY CARLOS RV",
       body: "🌴 sigue el canal para mas novedades.",
       mediaType: 1,
       previewType: "PHOTO",
