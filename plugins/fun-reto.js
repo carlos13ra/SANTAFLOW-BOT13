@@ -20,7 +20,7 @@ let handler = async (m, { conn }) => {
     },
     message: {
       contactMessage: {
-        displayName: 'The Carlos Brokers - Bot',
+        displayName: 'The Shadow Brokers - Bot',
         vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;The Shadow Brokers;;;\nFN:The Shadow Brokers\nTEL;type=CELL;type=VOICE;waid=51969214380:51969214380\nEND:VCARD`,
       },
     },
