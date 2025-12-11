@@ -6,7 +6,7 @@ const youtubeRegexID = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-z
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text?.trim())
-      return conn.reply(m.chat, `⚽ *Por favor, ingresa el nombre o enlace del video.*`, m)
+      return conn.reply(m.chat, `☃️ *Por favor, ingresa el nombre o enlace del video.*`, m)
 
     let videoIdMatch = text.match(youtubeRegexID)
     let search = await yts(videoIdMatch ? 'https://youtu.be/' + videoIdMatch[1] : text)
@@ -81,19 +81,18 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     else if (command === 'playvideo') {
       try {
-        const apiUrl = `https://api.stellarwa.xyz/dow/ytmp4?url=${encodeURIComponent(url)}&apikey=Shadow_Core`
+        const apiUrl = `https://api.nekolabs.web.id/downloader/youtube/v1?url=${encodeURIComponent(url)}&format=360`
         const res = await fetch(apiUrl)
         const json = await res.json()
 
-        if (!json.status || !json.data?.dl)
+        if (!json.success || !json.result?.downloadUrl)
           throw '⚠ No se obtuvo enlace de video válido.'
 
-        const videoUrl = json.data.dl
-        const titulo = json.data.title || title
-        const autor = json.data.author || canal
+        const videoUrl = json.result.downloadUrl
+        const titulo = json.result.title || title
 
         const caption = `> ♻️ *Titulo:* ${titulo}
-> 🎋 *Duración:* ${timestamp || 'Desconocido'}`.trim()
+> 🎋 *Duración:* ${json.result.duration || timestamp || 'Desconocido'}`.trim()
 
         await conn.sendMessage(m.chat, {
           video: { url: videoUrl },
@@ -104,7 +103,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             externalAdReply: {
               title: titulo,
               body: '📽️ Descarga Completa',
-              thumbnailUrl: thumbnail,
+              thumbnailUrl: json.result.cover || thumbnail,
               sourceUrl: url,
               mediaType: 1,
               renderLargerThumbnail: true
@@ -117,7 +116,9 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         console.error(e)
         return conn.reply(m.chat, '⚠ No se pudo enviar el video. Puede ser muy pesado o hubo un error en la API.', m)
       }
-    } else {
+    }
+
+    else {
       return conn.reply(m.chat, '✧ Comando no reconocido.', m)
     }
 
