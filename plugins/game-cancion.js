@@ -4,12 +4,7 @@ import axios from 'axios';
 const timeout = 60000;
 const poin = Math.floor(Math.random() * (2000 - 500 + 1)) + 500;
 const handler = async (m, {conn, usedPrefix}) => {
-  const datas = global
-  const idioma = datas.db.data.users[m.sender].language || global.defaultLenguaje
-  const _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`))
-  const tradutor = _translate.plugins.game_cancion
-
-  conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
+  
   const id = m.chat;
   if (id in conn.tebaklagu) {
     conn.reply(m.chat, tradutor.texto1, conn.tebaklagu[id][0]);
@@ -43,11 +38,13 @@ const handler = async (m, {conn, usedPrefix}) => {
   if (!aa) return conn.sendFile(m.chat, json.link_song, 'coba-lagi.mp3', '', m);
 };
 
-handler.help = ['tebaklagu'];
-handler.tags = ['game'];
-handler.command = /^cancion|canción$/i;
-export default handler;
+handler.help = ['cancion', 'canción']; 
+ handler.tags = ['game']; 
+handler.command = ['cancion', 'canción']
+handler.group = true
+handler.register = true
 
+export default handler
 async function fetchJson(url, options) {
   try {
     options ? options : {};
