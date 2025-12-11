@@ -2,7 +2,7 @@
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
 
 let handler = async (m, { conn }) => {
-  let img = 'https://files.catbox.moe/2adu0w.jpg'
+  let img = 'https://files.cloudkuimages.guru/images/059a1ed5ce2f.jpg'
   let reto = `
 ╭─★・✦・★─╮
   💮  R  E  T  O  💮
@@ -36,7 +36,7 @@ let handler = async (m, { conn }) => {
       mediaType: 1,
       previewType: "PHOTO",
       thumbnailUrl: avatar,
-      sourceUrl: "https://whatsapp.com/channel/0029VbAtbPA84OmJSLiHis2U"
+      sourceUrl: "https://whatsapp.com/channel/0029VbBukpH6LwHm0Ox44K2g"
     }
   }
 
