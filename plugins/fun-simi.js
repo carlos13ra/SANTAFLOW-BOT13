@@ -20,11 +20,14 @@ const handler = async (m, {text, command, args, usedPrefix}) => {
       const resu2 = await reis2.json();
       m.reply(resu2[0][0][0]);
     } catch {
-      throw `*Miku Bot😺* | 「 *ERROR* 」\n\nOcurrió un *Error*`;
+      throw `*Santaflow Bot😺* | 「 *ERROR* 」\n\nOcurrió un *Error*`;
     }
   }
 };
-handler.help = ['simi']
-handler.tags = ['fun'];
-handler.command = /^((sim)?simi|alexa|cortana|bot)$/i;
-export default handler;
+handler.help = ['santaflow', 'santa','bot + texto']; 
+ handler.tags = ['game']; 
+handler.command = ['santaflow', 'santa', 'bot']
+handler.group = true
+handler.register = true
+
+export default handler
