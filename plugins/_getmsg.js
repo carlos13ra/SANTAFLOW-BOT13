@@ -4,9 +4,12 @@ export async function all(m) {
     if (global.db.data.users[m.sender]?.banned) return
     if (m.isBaileys) return
 
-    let msgs = global.db.data.msgs
+    let msgs = global.db.data.msgs || {} // <-- Asegura que sea objeto
+
     if (!m.text) return
-    if (!(m.text in msgs)) return
+    if (typeof m.text !== 'string') return
+    if (!msgs || typeof msgs !== 'object') return  // <-- Seguridad extra
+    if (!(m.text in msgs)) return                  // <-- Ya no dará error
 
     let _m = this.serializeM(JSON.parse(JSON.stringify(msgs[m.text]), (_, v) => {
         if (
