@@ -53,7 +53,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     let menuText = `
 > ✧ Hola! @${userId.split('@')[0]} soy ${botname} aquí tienes la lista de comandos 
-> ✧  ${ucapan()} Feliz navidad te decea Santaflow ☃️❄️
+> ✧  ${ucapan()} Sigue a santaflow en sus redes sociales: TIKTOK: Santaflow oficial - FACEBOOK: Santaflow oficial - YOUTUBE: Santaflow oficial, y escucha sus canciones y exitos 🎧👌
 
 ╭━━━〔 \`sᴛᴀᴛᴜs-ᴜsᴇʀ\` 〕━━⬣
 │ 👤 *ᴜsᴇʀ* » ${name}
