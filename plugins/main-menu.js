@@ -47,9 +47,9 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     const secciones = Object.entries(grupos).map(([tag, cmds]) => {
       const emoji = emojis[tag] || '⭐'
-      return `╭━━🎃〔 ${emoji} \`${tag.toUpperCase()}\`} ━━⬣\n`
-     + cmds.map(cmd => `┃ 🕯️ ${cmd}`).join('\n') 
-     + `\n╰━━🕸️〔 👁️ 〕🕸️━━⬣`
+      return `╭━━🎧〔 ${emoji} \`${tag.toUpperCase()}\`} ━━⬣\n`
+     + cmds.map(cmd => `┃ ➩ ${cmd}`).join('\n') 
+     + `\n╰━━🎧〔 SANTAFLOW 〕🎧━━⬣`
     }).join('\n\n')
 
     let menuText = `
